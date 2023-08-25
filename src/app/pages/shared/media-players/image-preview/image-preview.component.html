@@ -1,0 +1,11 @@
+<div *ngIf="media && media.length == 1" class="full">
+  <span
+    class="d-flex justify-content-center align-items-center close-container"
+    (click)="close()"
+  >
+    <i class="fa-solid fa-xmark"></i>
+  </span>
+  <div class="w-100 h-100 d-flex justify-content-center align-items-center">
+    <img class="image" [src]="media[0].url" alt="" />
+  </div>
+</div>

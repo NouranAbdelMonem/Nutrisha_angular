@@ -1,0 +1,27 @@
+.full {
+  width: 100vw;
+  height: 100vh;
+}
+
+.close-container {
+  position: absolute;
+  top: 1rem;
+  margin-inline-start: 95%;
+
+  background-color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.image {
+  max-width: 75vw;
+  max-height: 75vh;
+  min-width: 25vw;
+  min-height: 25vh;
+}
+
+::ng-deep .custom-dialog > mat-dialog-container {
+  background-color: transparent;
+}
