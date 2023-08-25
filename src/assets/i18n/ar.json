@@ -1,0 +1,318 @@
+{
+  "BASE": {
+    "OF_LABEL": "من"
+  },
+  "TOP_BAR": {
+    "CHANGE_LANGUAGE": "تغيير اللغة"
+  },
+  "SHARED": {
+    "NOT_AVAILABLE": "غير موجود",
+    "CREATED": "أنشى فى",
+    "SEARCH": "ابحث هنا",
+    "NO_DATA": "لا يوجد بيانات",
+    "LOADING": "قيد التحميل",
+    "DELETE": "حذف",
+    "SELECT_LANGUAGE": "قم بختيار اللغة",
+    "YES": "نعم",
+    "NO": "لا",
+    "ADD": "أضف",
+    "EDIT": "تعديل",
+    "UPDATE": "تحديث",
+    "CLOSE": "غلق",
+    "SAVE_CHANGES": "احفظ التغييرات",
+    "CANCEL": "إلغاء",
+    "CONFIRM": "تأكيد",
+    "CONFIRM_MESSAGE": "هل انت متأكد من الاستمرار؟",
+    "ADDITIONAL": "إضافيه",
+    "NOTES": "ملاحظات",
+    "DAYS_OF_WEEK": {
+      "CHOOSE_DAY": "أختر يوم",
+      "EVERY_DAYS": "كل الايام",
+      "SUNDAY": "يوم الاحد",
+      "MONDAY": "يوم الاثنين",
+      "TUESDAY": "يوم الثلاثاء",
+      "WEDNESDAY": "يوم الاربعاء",
+      "THURSDAY": "يوم الخميس",
+      "FRIDAY": "يوم الجمعة",
+      "SATURDAY": "يوم السبت"
+    },
+    "HERE": "هنا",
+    "ALL": "الكل"
+  },
+  "ATTACHMENTS": {
+    "CHANGE_IMAGE": "تغيير الصورة",
+    "NO_MEDIA": "لا يوجد. من فضلك قم بإضافة البعض ليتم عرضه هنا",
+    "SELECT_VIDEO_HEADER": "اختيار الفيديو",
+    "SELECT_VIDEO": "قم باختيار الفيديو المراد رفعه، أو قم بإضافة رابط فيديو.",
+    "VIDEO_LINK": "رابط فيديو",
+    "VIDEO_UPLOAD": "رفع فيديو",
+    "VIDEO_UPLOAD_TEXT": "قم بختيار الفيديو المطلوب",
+    "COVER_IMAGE": "صورة الغلاف",
+    "MAIN_VIDEO": "الفيديو الرئيسى"
+  },
+  "REQUESTS": {
+    "SUCCESS": "تمت العملية بنجاح",
+    "UNKNOWN_ERROR": "خطأ غير معروف",
+    "DISMISS": "تجاهل"
+  },
+  "SOCIAL": {
+    "TOTAL_COMMENTS_NUMBER": "عدد التعليفات",
+    "TOTAL_LIKES_NUMBER": "عدد الاعجابات",
+    "COMMENTS": "التعليقات",
+    "LIKES": "الإعجابات"
+  },
+  "VALIDATION_ERRORS": {
+    "REQUIRED": "هذا الحقل مطلوب",
+    "INVALID_VALUE": "من فضلك ادخل بيانات صحيحة",
+    "SELECT_CORRECT_TAG": "من فضلك قم بختيار قيمه صحيحة",
+    "INVALID_COLOR": "اللون الابيض غير مسموح من فضلك اختر لون اخر",
+    "INCORRECT_EMAIL": "من فضلك ادخل بريد الكترونى صحيح"
+  },
+  "AUTH": {
+    "EMAIL": "البريد الالكترونى",
+    "PASSWORD": "كلمة السر",
+    "LOGIN": "تسجيل الدخول",
+    "LOGOUT": "تسجيل الخروج",
+    "CONFIRM_PASSWORD": "تأكيد كلمة السر",
+    "OLD_PASSWORD": "كلمة السر القديمة",
+    "NEW_PASSWORD": "كلمة السر الجديدة",
+    "CHANGE_PASSWORD": "تغيير كلمة السر",
+    "RESET_PASSWORD": "اعادة ضبظ كلمة السر"
+  },
+  "LANGUAGES": {
+    "EN": "الإنجليزية",
+    "ENGLISH_CODE": "الإنجليزية",
+    "AR": "العربية",
+    "ARABIC_CODE": "العربية"
+  },
+  "BLOGS": {
+    "SELECT_TAG": "أختر الإشارة",
+    "ADD_TAG": "أضف إشارة"
+  },
+  "DASHBOARD": {
+    "NAV_TITLE": "الرئيسية"
+  },
+  "ARTICLES": {
+    "NAV_TITLE": "المقالات",
+    "ADD": "أضف مقال",
+    "SUBJECT": "العنوان",
+    "DESCRIPTION": "الوصف",
+    "COVER_IMAGE": "صورة المقال",
+    "OWNER": {
+      "NAME": "اسم الناشر"
+    },
+    "TAG": "إشارة"
+  },
+  "BLOG_VIDEOS": {
+    "NAV_TITLE": "الفيديوهات",
+    "SUBJECT": "العنوان",
+    "COVER_IMAGE": "صورة المقال",
+    "TAG": "إشارة"
+  },
+  "POLLS": {
+    "NAV_TITLE": "الاستفتائات",
+    "SUBJECT": "السؤال",
+    "ANSWER": "الاجابه رقم",
+    "COLOR": "لون الخلفيه",
+    "ADD": "أضف استطلاع",
+    "ADD_NEW_ANSWER": "اضف اجابة اخرى"
+  },
+  "MOBILE_USERS": {
+    "NAV_TITLE": "المستخدمين",
+    "PROFILE_IMAGE": "صورة المستخدم",
+    "SIGN_UP_DATE": "تاريخ تسجيل الدخول",
+    "NAME": "الإسم",
+    "EMAIL": "البريد الإلكترونى",
+    "FILTERS": {
+      "NEW_USER": "مستخدم جديد",
+      "FOLLOW_UP": "متابعة"
+    },
+    "PHONE_NUMBER": "رقم التطبيق",
+    "SUBSCRIBE_DATE": "تاريخ الاشتراك",
+    "UNSUBSCRIBED": "غير مشترك",
+    "SUBSCRIBED_ON": "اشترك فى",
+    "PAID_AMOUNT": "القيمة المدفوعة",
+    "ALLERGY": "الحساسيات",
+    "DISLIKE": "الاكلات الغير مفضلة",
+    "RISKS": "المخاطر",
+    "ALLERGIES_DISLIKES_RISKS": "الحساسيات و الاكلات الغير مفضلة و المخاطر",
+    "AGE": "العمر",
+    "HEIGHT": "الطول",
+    "GENDER": "الجنس",
+    "WEIGHT": "الوزن",
+    "WEIGHT_LOSS": "تقدم الوزن",
+    "BAN_USER": "احظر المستخدم",
+    "UNBAN_USER": "الغاء حظر المستخدم",
+    "MORE_INFO_LABEL": "معلومات اضافية",
+    "PERSONAL_DETAILS": {
+      "LABEL": "معلومات المستخدم الشخصية",
+      "FILES_UPLOADED_LABEL": "الملفات المرفوعة",
+      "TARGET_WEIGHT": "الوزن ",
+      "AVERAGE_MEALS_PER_DAY": "متوسط عدد الوجبات فاليوم",
+      "ACTIVITY_LEVEL_LABEL": "معدل النشاط",
+      "ACTIVITY_LEVEL_ENUM": {
+        "0": "منخفض",
+        "1": "متوسط",
+        "2": "عالى"
+      },
+      "MEDICATIONS": "الدواء",
+      "MAIN_EATING_TARGET_LABEL": "اسباب الاكل",
+      "MAIN_EATING_TARGET_ENUM": {
+        "0": "الجوع",
+        "1": "يشعر بالملل",
+        "2": "مضغوط",
+        "3": "عاطفي"
+      },
+      "REGULAR_PERIOD": "يقيس على فترات منتظمة",
+      "PREGNANCY": "الحمل",
+      "NUTRISHA_GOAL": "الهدف"
+    },
+    "MAKE_PREMIUM": "أشترك له",
+    "BANNED_USER": "هذا المستخدم محظور",
+    "END_DATE": "تاريخ الانتهاء",
+    "AMOUNT": "المبلغ المدفوع",
+    "CURRENT_PLAN_NOTES": "ملاحظات الخطة الحالية"
+  },
+  "MEALS_PLAN": {
+    "TITLE": "تخطيط الوجبات",
+    "CURRENT_PLAN": "الخطة الحالية",
+    "PREVIOUS_PLAN": "الخطة السابقة",
+    "ADD_AS_TEMPLATE": "أحفظ فى قالب",
+    "TEMPLATE_NAME": "اسم القالب",
+    "UPDATE_TEMPLATE": "تعديل القالب",
+    "ADD_NEW_PLAN": "أضف خطة جديدة",
+    "CHOOSE_FROM_TEMPLATE": "قم بختيار من الخطط الموجودة",
+    "LAST_USED_TEMPLATES": "اخر القوالب المستعملة",
+    "NUMBER_OF_I_AM_HUNGRY_CLICKED_THIS_WEEK": "َأنقر ‘انا جائع’ هذا الاسبوع",
+    "ASSIGN_TO_USER": "تعيين الخطة",
+    "IS_PARENT_TEMPLATE_MESSAGE": "هذه الخطة مستخدمة بالفعل من قبل المستخدمين لذا لايمكن مسحها"
+  },
+  "PLAN_TEMPLATES": {
+    "NAV_TITLE": "القوالب",
+    "TEMPLATE_NAME_LABEL": "الاسم",
+    "OWNER_NAME_LABEL": "اسم المالك"
+  },
+  "MEALS": {
+    "NAV_TITLE": "الوجبات",
+    "NAME": "إسم الوجبة",
+    "STEPS": "الخطوات",
+    "ALLERGIES": "الحساسيات",
+    "LABEL": "نوع الوجبة",
+    "PREP_TIME": "وقت الإعداد",
+    "COOK_TIME": "وقت الطبخ",
+    "INGREDIENTS": "المكونات",
+    "ADD_NEW_MEAL_PLAN": "أضف خطة جديدة",
+    "ADD_NEW_MEAL": "تريد إضافة المذيد من الوجبات؟",
+    "MEALS_LABELS": {
+      "BREAKFAST": "الفطور",
+      "LUNCH": "الغداء",
+      "DINNER": "العشاء",
+      "SNACKS": "وجبات خفيفة",
+      "SUPPLEMENTS": "المكملات",
+      "EXTRABITES": "اكلات اضافية",
+      "RECOMMENDED": "المقترحة"
+    },
+    "MEAL_TYPE_ENUM": {
+      "0": "الفطور",
+      "1": "الغداء",
+      "2": "العشاء",
+      "3": "وجبات خفيفة",
+      "4": "المكملات",
+      "5": "ماء",
+      "6": "اكلات اضافية",
+      "7": "المقترحة"
+    },
+    "MEAL_UNIT_TYPE": {
+      "Liter": "لتر",
+      "Cup": "كوب",
+      "Tbs": "ملعقة كبيرة",
+      "Tsp": "ملعقة صغيرة",
+      "Kg": "كجم",
+      "Gram": "جرام",
+      "Slice": "شريحة",
+      "Piece": "قطعة"
+    },
+    "INGREDIENT": {
+      "QUANTITY": "الكمية",
+      "UNIT": "الوحدة",
+      "NAME": "الاسم"
+    },
+    "ADD_MORE_INGREDIENTS": "أضف مكون اخر",
+    "NOT_EXIST_INGREDIENT": "غير موجود؟ اضغط لاضافة",
+    "PART_OF_MEAL_PLAN": "هذة الوجبة جزء من خطط الوجبات لذلك لا يمكن مسحها"
+  },
+  "ADMIN_USERS": {
+    "NAV_TITLE": "مستخدمين الادارة",
+    "MAIN_INFO": "المعلومات الاساسية",
+    "NAME_LABEL": "إسم المستخدم",
+    "CHANGE_PASSWORD": "تغيير كلمة السر",
+    "PERMISSIONS": "الصلاحيات",
+    "PROFILE_IMAGE": "صورة المستخدم",
+    "EMAIL_LABEL": "البريد الالكترونى",
+    "ROLE_LABEL": "الدور",
+    "PASSWORD_LABEL": "كلمة السر",
+    "ADD_NEW_LABEL": "أضافة مستخدم جديد"
+  },
+  "ROLES": {
+    "NAV_TITLE": "الادوار والصلاحيات",
+    "NAME_LABEL": "إسم الدور",
+    "PERMISSIONS_LABEL": "الصلاحيات",
+    "LABELS": {
+      "Owner": "مالك",
+      "Admin": "مسؤول",
+      "Doctor": "طبيب"
+    }
+  },
+  "PERMISSIONS": {
+    "LABEL": "الصلاحيات",
+    "Owner_PERMISSIONS": "الصلاحيات الخاصة بالمالك",
+    "Admin_PERMISSIONS": "الصلاحيات الخاصة بالمسؤول",
+    "Doctor_PERMISSIONS": "الصلاحيات الخاصة بالطبيب",
+    "PARENT_NAMES": {
+      "BLOGS": "المدونات",
+      "APP_USERS_DETAILS": "تفاصيل مستخدم التطبيق",
+      "ADMIN_USERS": "تفاصيل مستخدمين لوحة التحكم",
+      "MEAL_PLANS": "قوالب الوجبات",
+      "MEALS": "الوجبات"
+    },
+    "canAccessAdminUsersModule": "",
+    "canViewAdminUsers": "الإطلاع على المسؤولين",
+    "canCreateAdminUsers": "انشاء مسؤول",
+    "canEditAdminUsers": "تعديل مسؤول",
+    "canDeleteAdminUsers": "مسح مسؤول",
+    "canAssignPremiumFeaturesToAppUsers": "يمكن تعيين ميزات مميزة للمستخدمين",
+    "canAccessBlogsModule": "",
+    "canViewBlogs": "الإطلاع على المدونات (الفيدوهات و الإستفتائات و المقالات)",
+    "canCreateBlogs": "انشاء مدونات (الفيدوهات و الإستفتائات و المقالات)",
+    "canEditBlogs": "تعديل مدونات (الفيدوهات و الإستفتائات و المقالات)",
+    "canDeleteBlogs": "مسح مدونات (الفيدوهات و الإستفتائات و المقالات)",
+    "canModerateComments": "حذف التعليقات على المقالات",
+    "canViewComments": "الأطلاع على تعليقات المقالات",
+    "canAccessAppUsersModule": "",
+    "canViewAppUsers": "الاطلاع على مستخدمين التطبيق",
+    "canViewAppUserContactInfo": "الإطلاع على بيانات الاتصال لمستخدمين التطبيق",
+    "canBanAppUsers": "إدارة تعليقات مستخدمين التطبيق",
+    "canAssignMealPlanToAppUsers": "تعيين وجبات لمستخدمين التطبيق",
+    "canAccessMealPlansModule": "",
+    "canViewMealPlans": "الأطلاع على قوالب الوجبات",
+    "canCreateParentMealPlans": "انشاء  قوالب رئيسى",
+    "canCreateChildMealPlans": "انشاء قالب فرعى",
+    "canEditMealPlans": "تعيديل القوالب الخاصه به",
+    "canAccessMealsModule": "",
+    "canViewMeals": "الإطلاع على الزجبات",
+    "canCreateMeals": "انشاء الوجبات",
+    "canEditMeals": "تعديل الوجبات",
+    "canDeleteMeals": "مسح الوجبات"
+  },
+  "PROFILE": {
+    "MY_PROFILE": "ملفى الشخصى",
+    "UPDATE_PROFILE": "تحديث الملف",
+    "EDIT_IMAGE": "تغيير الصورة"
+  },
+  "FOOTER": {
+    "TERMS": "الشروط",
+    "PRIVACY": "الخصوصية",
+    "FAQS": "أسئلة متكرره",
+    "REFRENCES": "المراجع والموارد"
+  }
+}

@@ -1,0 +1,319 @@
+{
+  "BASE": {
+    "OF_LABEL": "of"
+  },
+  "TOP_BAR": {
+    "CHANGE_LANGUAGE": "Change language"
+  },
+  "SHARED": {
+    "NOT_AVAILABLE": "N/A",
+    "CREATED": "Created At",
+    "SEARCH": "Search here",
+    "NO_DATA": "Nothing Here",
+    "LOADING": "Loading",
+    "DELETE": "Delete",
+    "SELECT_LANGUAGE": "Choose Language",
+    "YES": "Yes",
+    "NO": "No",
+    "ADD": "Add",
+    "EDIT": "Edit",
+    "UPDATE": "Update",
+    "CLOSE": "Close",
+    "SAVE_CHANGES": "Save Changes",
+    "CANCEL": "Cancel",
+    "CONFIRM": "Confirm",
+    "CONFIRM_MESSAGE": "Are you share you want continue?",
+    "ADDITIONAL": "Additional",
+    "NOTES": "Notes",
+    "DAYS_OF_WEEK": {
+      "CHOOSE_DAY": "Select Day",
+      "EVERY_DAYS": "Every Days",
+      "SUNDAY": "Sunday",
+      "MONDAY": "Monday",
+      "TUESDAY": "Tuesday",
+      "WEDNESDAY": "Wednesday",
+      "THURSDAY": "Thursday",
+      "FRIDAY": "Friday",
+      "SATURDAY": "Saturday"
+    },
+    "HERE": "here",
+    "ALL": "All"
+  },
+  "ATTACHMENTS": {
+    "CHANGE_IMAGE": "Update image",
+    "NO_MEDIA": "No media!! add some to be displayed here",
+    "SELECT_VIDEO_HEADER": "Select Video",
+    "SELECT_VIDEO": "Select a video to upload, or provide a Video link.",
+    "VIDEO_LINK": "Video URL",
+    "VIDEO_UPLOAD": "Upload video",
+    "VIDEO_UPLOAD_TEXT": "Choose video to upload",
+    "COVER_IMAGE": "Cover Image",
+    "MAIN_VIDEO": "Main Video"
+  },
+  "REQUESTS": {
+    "SUCCESS": "Operation Completed Successfully",
+    "UNKNOWN_ERROR": "Unknown error",
+    "DISMISS": "Dismiss"
+  },
+  "SOCIAL": {
+    "TOTAL_COMMENTS_NUMBER": "Number of comments",
+    "TOTAL_LIKES_NUMBER": "Number of likes",
+    "COMMENTS": "Comments",
+    "LIKES": "Likes"
+  },
+  "VALIDATION_ERRORS": {
+    "REQUIRED": "This field is required.",
+    "INVALID_VALUE": "Please enter correct value",
+    "SELECT_CORRECT_TAG": "Please select correct tag",
+    "INVALID_COLOR": "White isn't allowed, Please choose another color",
+    "INCORRECT_EMAIL": "Please enter correct email address"
+  },
+  "AUTH": {
+    "EMAIL": "Email",
+    "PASSWORD": "Password",
+    "CONFIRM_PASSWORD": "Confirm Password",
+    "LOGIN": "Login",
+    "LOGOUT": "Logout",
+    "OLD_PASSWORD": "Old Password",
+    "NEW_PASSWORD": "New Password",
+    "CHANGE_PASSWORD": "Change Password",
+    "RESET_PASSWORD": "Reset Password"
+  },
+  "LANGUAGES": {
+    "EN": "English",
+    "ENGLISH_CODE": "En",
+    "AR": "Arabic",
+    "ARABIC_CODE": "Ar"
+  },
+  "BLOGS": {
+    "SELECT_TAG": "Select tag",
+    "ADD_TAG": "Add tag"
+  },
+  "DASHBOARD": {
+    "NAV_TITLE": "Dashboard"
+  },
+  "ARTICLES": {
+    "NAV_TITLE": "Articles",
+    "ADD": "Add Article",
+    "SUBJECT": "Title",
+    "DESCRIPTION": "Description",
+    "COVER_IMAGE": "Cover Image",
+    "OWNER": {
+      "NAME": "Publisher Name"
+    },
+    "TAG": "Tag"
+  },
+  "BLOG_VIDEOS": {
+    "NAV_TITLE": "Blog Videos",
+    "SUBJECT": "Title",
+    "COVER_IMAGE": "Cover Image",
+    "TAG": "Tag"
+  },
+  "POLLS": {
+    "NAV_TITLE": "Polls",
+    "SUBJECT": "Question",
+    "ANSWER": "Answer",
+    "COLOR": "Color",
+    "ADD": "Add New Poll",
+    "ADD_NEW_ANSWER": "Add new answer"
+  },
+  "MOBILE_USERS": {
+    "NAV_TITLE": "Mobile Users",
+    "PROFILE_IMAGE": "Profile Image",
+    "SIGN_UP_DATE": "Sign up date",
+    "NAME": "Name",
+    "EMAIL": "Email",
+    "FILTERS": {
+      "NEW_USER": "New User",
+      "FOLLOW_UP": "Followups"
+    },
+    "PHONE_NUMBER": "Phone Number",
+    "SUBSCRIBE_DATE": "Subscribe Date",
+    "UNSUBSCRIBED": "Unsubscribed",
+    "SUBSCRIBED_ON": "Subscribed on",
+    "PAID_AMOUNT": "Total Paid Money",
+    "ALLERGY": "Allergy",
+    "DISLIKE": "Dislike",
+    "RISKS": "Risks",
+    "ALLERGIES_DISLIKES_RISKS": "Allergies, dislikes & risks",
+    "AGE": "Age",
+    "HEIGHT": "Height",
+    "GENDER": "Gender",
+    "WEIGHT": "Weight",
+    "WEIGHT_LOSS": "Progress",
+    "BAN_USER": "Ban User",
+    "UNBAN_USER": "UnBan User",
+    "MORE_INFO_LABEL": "More info",
+    "PERSONAL_DETAILS": {
+      "LABEL": "User personal details",
+      "FILES_UPLOADED_LABEL": "Uploads",
+      "TARGET_WEIGHT": "Target weight",
+      "AVERAGE_MEALS_PER_DAY": "Average meals per day",
+      "ACTIVITY_LEVEL_LABEL": "Activity Level",
+      "ACTIVITY_LEVEL_ENUM": {
+        "0": "Low",
+        "1": "Moderate",
+        "2": "High"
+      },
+      "MEDICATIONS": "Medications",
+      "MAIN_EATING_TARGET_LABEL": "Main eating trigger",
+      "MAIN_EATING_TARGET_ENUM": {
+        "0": "Physically Hungry",
+        "1": "Bored",
+        "2": "Stressed",
+        "3": "Emotionally in need of food"
+      },
+      "REGULAR_PERIOD": "Regular period",
+      "PREGNANCY": "Pregnancy",
+      "NUTRISHA_GOAL": "Nutrisha Goal"
+    },
+    "MAKE_PREMIUM": "Make Premium",
+    "BANNED_USER": "This user is Banned",
+    "SUBSCRIBED_FROM_CLINIC": "subscribed, from clinic",
+    "END_DATE": "End Date",
+    "AMOUNT": "Amount",
+    "CURRENT_PLAN_NOTES": "Notes for current meal plan"
+  },
+  "MEALS_PLAN": {
+    "TITLE": "Meal Plans",
+    "CURRENT_PLAN": "Current Week Plan",
+    "PREVIOUS_PLAN": "Previous Week plan",
+    "ADD_AS_TEMPLATE": "Save to template",
+    "TEMPLATE_NAME": "Template Name",
+    "UPDATE_TEMPLATE": "Update Template",
+    "ADD_NEW_PLAN": "Add meal plan",
+    "CHOOSE_FROM_TEMPLATE": "Choose From Templates",
+    "LAST_USED_TEMPLATES": "Last Used Templates",
+    "NUMBER_OF_I_AM_HUNGRY_CLICKED_THIS_WEEK": "Clicked ‘I’m hungry’ this week",
+    "ASSIGN_TO_USER": "Assign meal plan",
+    "IS_PARENT_TEMPLATE_MESSAGE": "This meal plan is used before as template in user's plan or parent of another meal plan, so you cant delete it."
+  },
+  "PLAN_TEMPLATES": {
+    "NAV_TITLE": "Plan Templates",
+    "TEMPLATE_NAME_LABEL": "Name",
+    "OWNER_NAME_LABEL": "Owner Name"
+  },
+  "MEALS": {
+    "NAV_TITLE": "Meals",
+    "NAME": "Meal Name",
+    "STEPS": "Steps",
+    "ALLERGIES": "Allergies",
+    "LABEL": "Label",
+    "PREP_TIME": "Preparing Time",
+    "COOK_TIME": "Cooking Time",
+    "INGREDIENTS": "Ingredients",
+    "ADD_NEW_MEAL_PLAN": "Add new Meal plan",
+    "ADD_NEW_MEAL": "Want to add more meals? Go to All meals",
+    "MEALS_LABELS": {
+      "BREAKFAST": "Breakfast",
+      "LUNCH": "Lunch",
+      "DINNER": "Dinner",
+      "SNACKS": "Snacks",
+      "SUPPLEMENTS": "Supplements",
+      "EXTRABITES": "Extra Bites",
+      "RECOMMENDED": "Recommended"
+    },
+    "MEAL_TYPE_ENUM": {
+      "0": "Breakfast",
+      "1": "Lunch",
+      "2": "Dinner",
+      "3": "Snacks",
+      "4": "Supplements",
+      "5": "Water",
+      "6": "ExtraBites",
+      "7": "Recommended"
+    },
+    "MEAL_UNIT_TYPE": {
+      "Liter": "Liter",
+      "Cup": "Cup",
+      "Tbs": "Tbs",
+      "Tsp": "Tsp",
+      "Kg": "Kg",
+      "Gram": "Gram",
+      "Slice": "Slice",
+      "Piece": "Piece"
+    },
+    "INGREDIENT": {
+      "QUANTITY": "Quantity",
+      "UNIT": "Unit",
+      "NAME": "Name"
+    },
+    "ADD_MORE_INGREDIENTS": "Add More Ingredients To Meal",
+    "NOT_EXIST_INGREDIENT": "Not Exist? Add it",
+    "PART_OF_MEAL_PLAN": "This Meal Already Part Of Meal Plan, So You can't delete it."
+  },
+  "ADMIN_USERS": {
+    "NAV_TITLE": "Admin Users",
+    "MAIN_INFO": "Main Info",
+    "NAME_LABEL": "Username",
+    "CHANGE_PASSWORD": "Change Password",
+    "PERMISSIONS": "Permissions",
+    "PROFILE_IMAGE": "Profile Image",
+    "EMAIL_LABEL": "Email",
+    "ROLE_LABEL": "Role",
+    "PASSWORD_LABEL": "Password",
+    "ADD_NEW_LABEL": "Add New User"
+  },
+  "ROLES": {
+    "NAV_TITLE": "Roles And Permissions",
+    "NAME_LABEL": "Role Name",
+    "PERMISSIONS_LABEL": "Permissions",
+    "LABELS": {
+      "Owner": "Owner",
+      "Admin": "Admin",
+      "Doctor": "Doctor"
+    }
+  },
+  "PERMISSIONS": {
+    "LABEL": "Permissions",
+    "Owner_PERMISSIONS": "Owner Permissions",
+    "Admin_PERMISSIONS": "Admin Permissions",
+    "Doctor_PERMISSIONS": "Doctor Permissions",
+    "PARENT_NAMES": {
+      "BLOGS": "Blogs",
+      "APP_USERS_DETAILS": "App User Details",
+      "ADMIN_USERS": "Admin Panel users",
+      "MEAL_PLANS": "Meal plans",
+      "MEALS": "Meals"
+    },
+    "canAccessAdminUsersModule": "",
+    "canViewAdminUsers": "Can View Other Admins",
+    "canCreateAdminUsers": "Can Create New Admins",
+    "canEditAdminUsers": "Can Edit Admins",
+    "canDeleteAdminUsers": "Can Delete Admins",
+    "canAssignPremiumFeaturesToAppUsers": "Can Assign Premium Features to users",
+    "canAccessBlogsModule": "",
+    "canViewBlogs": "View blog posts (videos, polls, and articles)",
+    "canCreateBlogs": "Create new blog posts (videos, polls, and articles)",
+    "canEditBlogs": "Edit blog posts (videos, polls, and articles)",
+    "canDeleteBlogs": "Delete blog posts (videos, polls, and articles)",
+    "canModerateComments": "Moderate comments on blog posts (videos, polls, and articles)",
+    "canViewComments": "View comments on blog posts (videos, polls, and articles)",
+    "canAccessAppUsersModule": "",
+    "canViewAppUsers": "View app users",
+    "canViewAppUserContactInfo": "View app users contact information",
+    "canBanAppUsers": "Can Ban app users",
+    "canAssignMealPlanToAppUsers": "Assign new meal plan to users ",
+    "canAccessMealPlansModule": "",
+    "canViewMealPlans": "View meal plans",
+    "canCreateParentMealPlans": "Create parent meal plans",
+    "canCreateChildMealPlans": "Create child meal plans",
+    "canEditMealPlans": "Edit his own meal plans",
+    "canAccessMealsModule": "",
+    "canViewMeals": "View meals",
+    "canCreateMeals": "Create meals",
+    "canEditMeals": "Edit Meals",
+    "canDeleteMeals": "Delete Meals"
+  },
+  "PROFILE": {
+    "MY_PROFILE": "My Profile",
+    "UPDATE_PROFILE": "Update Profile",
+    "EDIT_IMAGE": "Edit Image"
+  },
+  "FOOTER": {
+    "TERMS": "Terms",
+    "PRIVACY": "Privacy",
+    "FAQS": "FAQS",
+    "REFRENCES": "References and Resources"
+  }
+}
