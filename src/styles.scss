@@ -1,0 +1,229 @@
+$primary: #ff725a;
+
+html,
+body {
+  height: 100%;
+  background-color: #f2f3f8;
+  // font-family: Poppins, Helvetica, sans-serif in !important;
+  font-family: Tajawal, Poppins, Helvetica, sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+body [class^="mat-"],
+body [class*=" mat-"] {
+  font-family: Poppins, Helvetica, sans-serif in !important;
+}
+
+body {
+  margin: 0;
+  //font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body[dir="rtl"] {
+  font-size: 16px !important;
+}
+
+.btn-link {
+  text-decoration: none;
+  display: inline-block;
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.fa-edit {
+  cursor: pointer;
+}
+
+.errorMessage .mat-button-wrapper {
+  color: red !important;
+}
+
+.successMessage .mat-button-wrapper {
+  color: cornflowerblue !important;
+}
+
+.btn-add {
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: $primary;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & .fa {
+    font-size: 1rem;
+    color: white;
+  }
+}
+
+.icon-delete {
+  color: red;
+}
+
+/*#region Angular Material*/
+
+.mat-form-field-flex:hover {
+  & > .mat-form-field-outline {
+    outline: none;
+  }
+}
+
+.mat-row-hover {
+  &:hover {
+    background: rgb(0, 0, 0, 0.05);
+    cursor: pointer;
+  }
+}
+
+.mat-elevation-z8 {
+  background: white;
+  max-width: 100%;
+  //padding: 0 1rem;
+  margin: 1rem;
+}
+
+.mat-flat-button {
+  color: white !important;
+}
+
+.bg-trasparent {
+  .mat-dialog-container {
+    padding: 0;
+    overflow-x: hidden;
+    background-color: transparent;
+  }
+}
+
+.remove-mat-group-border-bottom .mat-tab-header {
+  border-bottom: none;
+}
+
+/*#endregion Angular Material*/
+
+/* #region */
+.btn:focus {
+  outline: none;
+  box-shadow: 0 0 0;
+}
+
+button:focus {
+  outline: none;
+  box-shadow: 0 0 0;
+}
+
+input.form-control {
+  //box-sizing: content-box;
+}
+
+input.form-control:focus {
+  outline: none;
+  box-shadow: 0 0 0;
+  border: 1px solid orange;
+}
+
+/*#endregion*/
+
+.tag-preview {
+  width: 87.03px;
+  height: 26.8px;
+  padding: 7px;
+  color: white;
+  border-radius: 35px;
+}
+
+/*#region margin and padding*/
+.margin-start-1 {
+  margin-inline-start: 0.5rem !important;
+}
+
+.margin-start-2 {
+  margin-inline-start: 1rem !important;
+}
+
+.margin-start-3 {
+  margin-inline-start: 1.5rem !important;
+}
+
+.margin-end-1 {
+  margin-inline-end: 0.5rem !important;
+}
+
+.margin-end-2 {
+  margin-inline-end: 1rem !important;
+}
+
+.margin-end-3 {
+  margin-inline-end: 1.5rem !important;
+}
+
+.margin-end-4 {
+  margin-inline-end: 2rem !important;
+}
+.margin-end-5 {
+  margin-inline-end: 2.5rem !important;
+}
+.padding-start-1 {
+  padding-inline-start: 0.5rem !important;
+}
+
+.padding-start-2 {
+  padding-inline-start: 1rem !important;
+}
+
+.padding-start-3 {
+  padding-inline-start: 1.5rem !important;
+}
+
+.padding-end-1 {
+  padding-inline-end: 0.5rem !important;
+}
+
+.padding-end-2 {
+  padding-inline-end: 1rem !important;
+}
+
+.padding-end-3 {
+  padding-inline-end: 1.5rem !important;
+}
+
+/*#endregion*/
+
+.app-link {
+  color: $primary;
+}
+
+.vertical-breaker {
+  //width: 0;
+  border: 1px solid #d9d9d9;
+  background-color: #d9d9d9;
+  max-width: 2px;
+  //height: 100%;
+  //flex: 1 1 0;
+}
+
+.radius-2 {
+  border-radius: 20px !important;
+}
+.radius-4 {
+  border-radius: 50px !important;
+}
+
+.w-33 {
+  width: 33% !important;
+}
+
+.w-67 {
+  width: 67% !important;
+}
+.nut-btn {
+  border: 0;
+  outline: none;
+  color: white;
+  background-color: #215121;
+  border-radius: 49px;
+}
+

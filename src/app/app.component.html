@@ -1,0 +1,6 @@
+<app-app-request-loader></app-app-request-loader>
+<!--<app-splash-screen></app-splash-screen>-->
+
+<router-outlet
+  [dir]="translationService.directionChanged$ | async">
+</router-outlet>
