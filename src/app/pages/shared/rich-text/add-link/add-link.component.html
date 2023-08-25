@@ -1,0 +1,31 @@
+<form
+  [formGroup]="linkForm"
+  class="d-flex flex-column justify-content-center align-items-center"
+>
+  <mat-form-field appearance="fill" style="height: 60px">
+    <mat-label> Link </mat-label>
+    <input matInput formControlName="link" />
+    <mat-error>Please Add Correct Link</mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label> Placeholder </mat-label>
+    <input matInput formControlName="placeHolder" />
+    <mat-error>{{ "VALIDATION_ERRORS.REQUIRED" | translate }}</mat-error>
+  </mat-form-field>
+  <button
+    class="w-100 my-2"
+    mat-flat-button
+    color="primary"
+    [disabled]="linkForm.invalid"
+    (click)="$event.preventDefault(); dialogRef.close(linkForm.value)"
+  >
+    {{ "SHARED.ADD" | translate }}
+  </button>
+  <button
+    class="w-100"
+    mat-button
+    (click)="$event.preventDefault(); dialogRef.close(null)"
+  >
+    {{ "SHARED.CANCEL" | translate }}
+  </button>
+</form>

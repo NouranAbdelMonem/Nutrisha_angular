@@ -1,0 +1,37 @@
+<div
+  class="NgxEditor__Wrapper"
+  [style.border]="'2px #D9D9DE solid'"
+  [style.border-color]="
+    firstFocus && ngControl.control.invalid ? 'red' : borderColor
+  "
+>
+  <ngx-editor-menu
+    [editor]="editor"
+    [toolbar]="toolbar"
+    [disabled]="readOnly"
+    [colorPresets]="['red']"
+  >
+  </ngx-editor-menu>
+  <ngx-editor
+    (focusIn)="borderColor = 'coral'"
+    (focusOut)="borderColor = '#D9D9DE'; firstFocus = true"
+    style="background-color: transparent !important"
+    [editor]="editor"
+    [ngModel]="localizedObject[currentLang]"
+    outputFormat="html"
+    [disabled]="readOnly"
+    [maxlength]="200"
+    placeholder="{{ 'ARTICLES.DESCRIPTION' | translate }} *"
+  >
+    <div class="NgxEditor" style="background-color: transparent"></div>
+  </ngx-editor>
+</div>
+
+<div class="margin-start-1" style="height: 20px">
+  <p
+    class="error-message"
+    [style.height]="firstFocus && ngControl.control.invalid ? '20px' : '0'"
+  >
+    {{ "VALIDATION_ERRORS.REQUIRED" | translate }}
+  </p>
+</div>

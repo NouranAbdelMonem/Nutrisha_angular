@@ -1,0 +1,66 @@
+<aside class="side-nav" [style.width]="'285px'">
+  <a *ngIf="!collapse" class="nav-side-header" routerLink="/articles">
+    <span class="nav__logo">
+      <img src="assets/media/logo.svg" alt="logo" />
+    </span>
+  </a>
+
+  <ul class="menu-nav menu-nav-scroll">
+    <ng-container *ngFor="let sideItem of sideNav">
+      <ng-template
+        *ngIf="sideItem.type === 'link'"
+        [ngTemplateOutlet]="sideNavItem"
+        [ngTemplateOutletContext]="{ item: sideItem }"
+      >
+      </ng-template>
+
+      <!--      <ng-template-->
+      <!--        *ngIf="sideItem.type === 'section'"-->
+      <!--        [ngTemplateOutlet]="sideNavSection"-->
+      <!--        [ngTemplateOutletContext]="{ item: sideItem }"-->
+      <!--      >-->
+      <!--      </ng-template>-->
+    </ng-container>
+  </ul>
+</aside>
+
+<ng-template #sideNavSection let-item="item">
+  <ng-template
+    [ngTemplateOutlet]="sideNavItem"
+    [ngTemplateOutletContext]="{ item: item }"
+  >
+  </ng-template>
+  <ul>
+    <ng-container *ngFor="let sideItem of item.children">
+      <ng-template
+        *ngIf="sideItem.type === 'link'"
+        [ngTemplateOutlet]="sideNavItem"
+        [ngTemplateOutletContext]="{ item: sideItem }"
+      >
+      </ng-template>
+
+      <ng-template
+        *ngIf="sideItem.type === 'section'"
+        [ngTemplateOutlet]="sideNavSection"
+        [ngTemplateOutletContext]="{ item: sideItem }"
+      >
+      </ng-template>
+    </ng-container>
+  </ul>
+</ng-template>
+
+<ng-template #sideNavItem let-item="item">
+  <li class="menu-item" *ngxPermissionsOnly="item.permission">
+    <a
+      class="menu-link"
+      [class.menu-toggler]="item.type == 'section'"
+      [routerLink]="item.href"
+      routerLinkActive="menu-item-active"
+    >
+      <i [ngClass]="item.icon" class="menu-icon"></i>
+      <span class="side-nav-link-text">
+        {{ item.title | translate }}
+      </span>
+    </a>
+  </li>
+</ng-template>

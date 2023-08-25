@@ -1,0 +1,16 @@
+div.ql-toolbar.ql-snow {
+  border-top-right-radius: 30px;
+  border-top-left-radius: 30px;
+}
+
+.NgxEditor__Wrapper > * {
+  background-color: transparent !important;
+}
+
+.error-message {
+  font-size: 10.5px;
+  overflow: hidden;
+  //height: 0;
+  color: red;
+  transition: height 0.3s linear;
+}

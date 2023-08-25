@@ -1,0 +1,10 @@
+<div
+  *ngIf="showSplash"
+  class="app-splash-screen"
+  [ngStyle]="{ opacity: opacityChange, transition: splashTransition }"
+>
+  <div class="app-splash-content">
+    <mat-progress-spinner [diameter]="30"></mat-progress-spinner>
+    <!--    <div data-text="Loading ..." class="loading-text">Loading ...</div>-->
+  </div>
+</div>

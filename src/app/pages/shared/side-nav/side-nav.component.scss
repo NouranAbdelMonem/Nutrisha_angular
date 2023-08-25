@@ -1,0 +1,121 @@
+$baseNavColor: #1E1E2D;
+$navHeaderColor: #1A1A27;
+$topBarHoverColor: #3699FF;
+
+
+.side-nav {
+  position: fixed;
+  height: 100vh;
+  top: 0;
+  bottom: 0;
+  background-color: $baseNavColor;
+
+  transition: width 1s linear;
+  //font-weight: 400;
+}
+
+.nav-side-header {
+  height: 65px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: $navHeaderColor;
+}
+
+.side-nav-link-text {
+
+}
+
+.menu-nav {
+  padding: 0;
+  list-style: none;
+  margin: 1rem 0;
+  height: 100vh;
+  overflow-x: auto;
+}
+
+.menu-item {
+  text-align: start;
+  white-space: nowrap;
+  color: #969BA1;
+  cursor: pointer;
+  width: 100%;
+
+  &:hover :first-of-type('a') {
+    background-color: $navHeaderColor;
+    color: white;
+  }
+}
+
+.menu-link {
+  display: inline-block;
+  padding: 15px 25px;
+  text-decoration: none;
+  color: #969BA1;
+  width: 100%;
+  //font-size: 10%;
+
+  &:hover {
+    color: white;
+
+    .menu-icon {
+      color: #5D78FF;
+    }
+  }
+}
+
+.menu-item-active {
+  background-color: $navHeaderColor;
+  color: white;
+
+  .menu-icon {
+    color: #5D78FF;
+  }
+}
+
+.menu-icon {
+  margin-inline-end: 15px;
+  max-width: 16px;
+}
+
+
+.menu-submenu {
+  display: flex;
+  flex-direction: column;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s linear;
+}
+
+.menu-submenu-open {
+  max-height: 100vh;
+}
+
+/*#region Scroll Bar*/
+.menu-nav-scroll::-webkit-scrollbar {
+  width: 12px;
+}
+
+/* Track */
+.menu-nav-scroll::-webkit-scrollbar-track {
+  background: $baseNavColor;
+}
+
+/* Handle */
+.menu-nav-scroll::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  width: 6px;
+  background: #474F6E;
+  border: 3px solid $baseNavColor;
+  background-clip: content-box;
+}
+
+/* Handle on hover */
+.menu-nav-scroll::-webkit-scrollbar-thumb:hover {
+  background: #637099;
+}
+
+/*#endregion*/
+
+
