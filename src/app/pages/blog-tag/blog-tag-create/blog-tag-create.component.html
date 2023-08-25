@@ -1,0 +1,19 @@
+<form [formGroup]="blogForm" style="display: flex; flex-direction: column">
+  <mat-error></mat-error>
+
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Tag Name</mat-label>
+    <input [maxlength]="10" matInput placeholder="Tag Name" formControlName="name">
+  </mat-form-field>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Color</mat-label>
+    <input matInput type="color" formControlName="color" placeholder="Color" #color>
+    <mat-error *ngIf="color.value == '#ffffff'">
+      {{"VALIDATION_ERRORS.INVALID_COLOR" | translate}}
+    </mat-error>
+  </mat-form-field>
+
+  <button mat-button type="submit" (click)="submit()" color="primary"
+          [disabled]="blogForm.invalid">{{'SHARED.ADD' | translate}}</button>
+  <button mat-button type="button" (click)="close()">{{'SHARED.CANCEL' | translate}}</button>
+</form>

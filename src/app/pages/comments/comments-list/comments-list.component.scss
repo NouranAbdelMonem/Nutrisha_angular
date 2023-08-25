@@ -1,0 +1,41 @@
+$font-color: #646C9A;
+
+.comments-container {
+}
+
+.comment {
+  padding: 15px;
+}
+
+.comment-owner-name {
+  margin-inline-start: 5px;
+  margin-top: 5px;
+  color: $font-color;
+  font-weight: bold;
+}
+
+.comment-date {
+  margin: 5px 0 0;
+  padding: 0;
+  // margin-top: 5px;
+}
+
+.comment-content {
+  overflow: hidden;
+  overflow-wrap: break-word;
+  white-space: pre-line;
+  margin-top: 1rem;
+  margin-inline-start: 1rem;
+  color: $font-color;
+}
+
+.option-toggle {
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+
+  &:hover {
+    cursor: pointer;
+    background-color: #F5F5F5;
+  }
+}

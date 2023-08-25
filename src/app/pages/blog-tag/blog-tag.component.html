@@ -1,0 +1,42 @@
+<div class="d-flex align-items-start">
+  <mat-form-field class="d-flex align-items-center">
+    <mat-label>{{ "BLOGS.SELECT_TAG" | translate }}</mat-label>
+    <input
+      matInput
+      [readonly]="readOnly"
+      #tag
+      type="text"
+      placeholder="Pick one"
+      aria-label="Number"
+      title="Text"
+      [formControl]="formControl"
+      (input)="loadTags(tag.value)"
+      (focus)="loadOnFocusTags()"
+      [matAutocomplete]="auto"
+    />
+
+    <mat-error>{{
+      "VALIDATION_ERRORS.SELECT_CORRECT_TAG" | translate
+    }}</mat-error>
+
+    <mat-spinner matSuffix *ngIf="loading" diameter="20"></mat-spinner>
+    <mat-autocomplete
+      autoActiveFirstOption
+      #auto="matAutocomplete"
+      (optionSelected)="setSelectedTag($event.option.value)"
+    >
+      <mat-option *ngFor="let tag of tags" [value]="tag">
+        {{ tag.name }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  <button
+    *ngIf="!readOnly"
+    mat-flat-button
+    color="primary"
+    class="mx-2 add-tag"
+    (click)="addTag()"
+  >
+    {{ "BLOGS.ADD_TAG" | translate }}
+  </button>
+</div>

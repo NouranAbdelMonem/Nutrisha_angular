@@ -1,0 +1,59 @@
+<div class="comments-container mat-elevation-z8 rounded" *ngIf="'canViewComments'">
+  <div>
+    <h3 class="p-3 m-0">{{ "SOCIAL.COMMENTS" | translate }}</h3>
+    <hr class="m-0" />
+  </div>
+  <div>
+    <div *ngFor="let comment of comments; let i = index">
+      <div class="comment">
+        <div class="d-flex justify-content-between">
+          <div class="d-flex justify-content-start">
+            <img
+              class="comment-owner"
+              [alt]="comment.owner.name"
+              appProfileImage
+              [imageUrl]="comment.owner.profileImage"
+              [circularWidth]="50"
+            />
+            <p class="comment-owner-name">{{ comment.owner.name }}</p>
+          </div>
+          <div class="d-flex justify-content-end align-items-start">
+            <p class="comment-date">{{ comment.created | date: "short" }}</p>
+            <span>
+              <i
+                *ngxPermissionsOnly="'canModerateComments'"
+                [matMenuTriggerFor]="menu"
+                class="fa fa-list d-flex justify-content-center align-items-center option-toggle"
+              >
+              </i>
+
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="deleteComment(comment.id)">
+                  {{ "SHARED.DELETE" | translate }}
+                </button>
+              </mat-menu>
+            </span>
+          </div>
+        </div>
+
+        <p class="comment-content">{{ comment.content }}</p>
+      </div>
+      <hr *ngIf="i != comments.length - 1" />
+    </div>
+    <app-no-data-placeholder
+      classes="mt-3"
+      [data]="comments"
+    ></app-no-data-placeholder>
+  </div>
+  <mat-paginator
+    [length]="totalRows"
+    [pageSize]="10"
+    [pageSizeOptions]="[1, 5, 10, 50]"
+    (page)="
+      queryParams.pageSize = $event.pageSize;
+      queryParams.pageNumber = $event.pageIndex;
+      loadComments()
+    "
+    showFirstLastButtons
+  ></mat-paginator>
+</div>

@@ -1,0 +1,29 @@
+.mat-header-cell {
+  background: #2a3042;
+  color: white;
+}
+.mat-column-profileImage {
+  width: 70px;
+}
+.profile-image-container {
+  display: flex;
+  align-items: center;
+  img {
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
+  }
+}
+
+.mat-column-title {
+  max-width: 8rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.list-container {
+  background: white;
+  max-width: 100%;
+  //padding: 0 1rem;
+  margin: 1rem;
+}

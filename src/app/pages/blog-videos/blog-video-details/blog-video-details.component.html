@@ -1,0 +1,119 @@
+<div *ngIf="blogVideo" class="p-3 bg-white mat-elevation-z8">
+  <div class="d-flex justify-content-start">
+    <div class="flex-grow-1">
+      <div *ngIf="viewOnly">
+        <div
+          *ngxPermissionsOnly="['canEditBlogVideos', 'canDeleteBlogVideos']"
+          class="d-flex justify-content-end"
+        >
+          <div class="icon-container" [matMenuTriggerFor]="menu">
+            <i class="fa-solid fa-ellipsis-vertical"> </i>
+          </div>
+          <mat-menu #menu="matMenu">
+            <button
+              *ngxPermissionsOnly="'canEditBlogVideos'"
+              mat-menu-item
+              (click)="viewOnly = false"
+            >
+              {{ "SHARED.EDIT" | translate }}
+            </button>
+            <button
+              *ngxPermissionsOnly="'canDeleteBlogVideos'"
+              mat-menu-item
+              (click)="delete()"
+            >
+              {{ "SHARED.DELETE" | translate }}
+            </button>
+          </mat-menu>
+        </div>
+      </div>
+
+      <form
+        [formGroup]="blogVideoForm"
+        class="w-100 d-flex flex-column justify-content-center align-items-start flex-wrap flex-xl-fill"
+      >
+        <div class="w-100 d-flex justify-content-center align-items-center">
+          <mat-form-field class="my-1 w-100 flex-grow-1 margin-end-2">
+            <mat-label>{{ "ARTICLES.SUBJECT" | translate }}</mat-label>
+            <input
+              matInput
+              [maxLength]="100"
+              type="text"
+              formControlName="subject"
+              [readonly]="viewOnly"
+            />
+            <mat-error>
+              <span *ngIf="blogVideoForm.get('subject').hasError('required')">{{
+                "VALIDATION_ERRORS.REQUIRED" | translate
+              }}</span>
+            </mat-error>
+          </mat-form-field>
+
+          <app-blog-tag
+            #tag
+            class="my-1 w-100"
+            formControlName="tag"
+            [readOnly]="viewOnly"
+          ></app-blog-tag>
+        </div>
+        <app-attachment
+          class="my-1 w-100"
+          formControlName="mainVideo"
+          [supportType]="'video'"
+          label="{{ 'ATTACHMENTS.MAIN_VIDEO' | translate }} *"
+          [maxLength]="1"
+          [minLength]="1"
+          [readOnly]="viewOnly"
+          [flags]="'MainMedia'"
+        >
+        </app-attachment>
+
+        <app-attachment
+          class="my-1 w-100"
+          formControlName="coverImage"
+          [imagesType]="'image/*'"
+          [supportType]="'image'"
+          [maxLength]="1"
+          label="{{ 'ATTACHMENTS.COVER_IMAGE' | translate }} "
+          [readOnly]="viewOnly"
+          [flags]="'CoverImage'"
+        >
+        </app-attachment>
+        <div class="w-50 d-flex">
+          <!--          <div>-->
+          <button
+            mat-flat-button
+            color="primary"
+            [hidden]="viewOnly"
+            [disabled]="blogVideoForm.invalid"
+            (click)="submit()"
+          >
+            {{
+              (blogVideo.id ? "SHARED.SAVE_CHANGES" : "SHARED.ADD") | translate
+            }}
+          </button>
+          <button
+            class="margin-start-1"
+            mat-stroked-button
+            color="primary"
+            [hidden]="viewOnly"
+            (click)="$event.preventDefault(); tag.clear(); cancelEditing()"
+          >
+            {{ "SHARED.CANCEL" | translate }}
+          </button>
+          <!--          </div>-->
+
+          <button
+            class="margin-start-1"
+            mat-flat-button
+            color="warn"
+            *ngIf="blogVideo.id"
+            (click)="delete()"
+          >
+            {{ "SHARED.DELETE" | translate }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
