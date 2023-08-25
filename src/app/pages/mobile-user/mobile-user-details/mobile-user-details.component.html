@@ -1,0 +1,461 @@
+<div *ngIf="userDetails" class="details-container m-3 p-3 bg-white">
+  <div
+    class="w-100 alert alert-primary"
+    *ngIf="userDetails?.isBanned"
+  >
+    {{ "MOBILE_USERS.BANNED_USER" | translate }}
+  </div>
+  <div class="d-flex justify-content-end mb-2" *ngxPermissionsOnly="'canAssignPremiumFeaturesToAppUsers'">
+    <button
+      *ngIf="!userDetails.isSubscribed"
+      mat-raised-button
+      color="primary"
+      (click)="openMakePremiumDialog()"
+    >
+        <span class="text-white">{{
+          "MOBILE_USERS.MAKE_PREMIUM" | translate
+          }}</span>
+    </button>
+  </div>
+  <div>
+    <div class="w-100 user-details-header d-flex justify-content-between">
+      <div
+        class="px-3 base-info-container flex-fill d-flex justify-content-between align-items-center"
+      >
+        <div
+          class="d-flex overflow-hidden justify-content-start align-items-center info-section"
+        >
+          <img
+            class="user-image"
+            appProfileImage
+            [imageUrl]="userDetails?.profileImage"
+            [alt]="userDetails?.name"
+          />
+          <div>
+            <span
+              *ngIf="userDetails.isManuallySubscribed"
+              class="manual-subscription"
+              ><i class="fa-regular fa-star manual-subscription-icon"></i>
+              {{ "MOBILE_USERS.SUBSCRIBED_FROM_CLINIC" | translate }}</span
+            >
+            <p
+              class="m-0 fw-bold text-truncate"
+              [matTooltip]="userDetails?.name"
+            >
+              {{ userDetails?.name ?? ("SHARED.NOT_AVAILABLE" | translate) }}
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="d-flex mx-3 overflow-hidden justify-content-center px-2 info-section"
+        >
+          <div
+            class="d-flex flex-column justify-content-center align-items-start"
+          >
+            <p [matTooltip]="userDetails?.gender">
+              <span class="text-nowrap"
+                >{{ "MOBILE_USERS.GENDER" | translate }}:</span
+              >
+              <span class="text-truncate">{{
+                userDetails?.gender
+                  ? userDetails?.gender
+                  : ("SHARED.NOT_AVAILABLE" | translate)
+              }}</span>
+            </p>
+            <span [matTooltip]="userDetails?.age?.toString()">
+              <span class="text-nowrap"
+                >{{ "MOBILE_USERS.AGE" | translate }}:</span
+              >
+              <span class="text-truncate">{{
+                userDetails?.age
+                  ? userDetails?.age
+                  : ("SHARED.NOT_AVAILABLE" | translate)
+              }}</span>
+            </span>
+          </div>
+        </div>
+
+        <div
+          *ngxPermissionsOnly="'canViewAppUserContactInfo'"
+          class="d-flex overflow-hidden flex-column justify-content-start align-items-start info-section"
+        >
+          <p [matTooltip]="userDetails?.email">
+            <span class="text-nowrap"
+              >{{ "MOBILE_USERS.EMAIL" | translate }}:</span
+            >
+            <span class="text-truncate">{{
+              userDetails?.email
+                ? userDetails?.email
+                : ("SHARED.NOT_AVAILABLE" | translate)
+            }}</span>
+          </p>
+          <span [matTooltip]="userDetails?.phoneNumber">
+            <span class="text-nowrap"
+              >{{ "MOBILE_USERS.PHONE_NUMBER" | translate }}:</span
+            >
+            <span class="text-truncate">{{
+              userDetails?.phoneNumber
+                ? userDetails?.phoneNumber
+                : ("SHARED.NOT_AVAILABLE" | translate)
+            }}</span>
+          </span>
+        </div>
+      </div>
+      <div>
+        <div class="user-measurements-container">
+          <!--        <span class="user-measurement-data">-->
+          <!--          <p class="user-measurement-title">-->
+          <!--            {{ "MOBILE_USERS.AGE" | translate }}-->
+          <!--          </p>-->
+          <!--          <p>{{ userDetails?.age }}</p>-->
+          <!--        </span>-->
+          <!--        <div class="vertical-line"></div>-->
+
+          <!--        <span class="user-measurement-data">-->
+          <!--          <p class="user-measurement-title">-->
+          <!--            {{ "MOBILE_USERS.GENDER" | translate }}-->
+          <!--          </p>-->
+          <!--          <p>{{ userDetails?.gender ?? ('SHARED.NOT_AVAILABLE' | translate) }}</p>-->
+          <!--        </span>-->
+
+          <!--        <div class="vertical-line"></div>-->
+
+          <span class="user-measurement-data">
+            <p class="user-measurement-title">
+              {{ "MOBILE_USERS.HEIGHT" | translate }}
+            </p>
+            <p>{{ userDetails?.height }}</p>
+          </span>
+          <div class="vertical-line"></div>
+
+          <span class="user-measurement-data">
+            <p class="user-measurement-title">
+              {{ "MOBILE_USERS.WEIGHT" | translate }}
+            </p>
+            <p>{{ userDetails?.currentWeight }}</p>
+          </span>
+
+          <div class="vertical-line"></div>
+
+          <span class="user-measurement-data">
+            <p class="user-measurement-title">
+              {{ "MOBILE_USERS.WEIGHT_LOSS" | translate }}
+            </p>
+            <p>
+              {{
+                (userDetails?.weightLoss > 0 ? "+" : "") +
+                  userDetails?.weightLoss.toString()
+              }}
+            </p>
+          </span>
+        </div>
+      </div>
+    </div>
+    <hr />
+
+    <div class="w-100 d-flex justify-content-between">
+      <span>
+        <p>{{ "MOBILE_USERS.SIGN_UP_DATE" | translate }}</p>
+        <p>{{ userDetails?.created | date : "dd-MM-YYYY" }}</p>
+      </span>
+      <span>
+        <p>{{ "MOBILE_USERS.SUBSCRIBE_DATE" | translate }}</p>
+        <p>
+          {{
+            !userDetails?.isSubscribed
+              ? ("MOBILE_USERS.UNSUBSCRIBED" | translate)
+              : (userDetails?.subscriptionDate | date : "dd-MM-YYYY")
+          }}
+        </p>
+      </span>
+      <span>
+        <p>{{ "MOBILE_USERS.PAID_AMOUNT" | translate }}</p>
+        <p>
+          {{
+            userDetails?.totalPaidAmount
+              ? (userDetails?.totalPaidAmount | number : "1.0-2")
+              : ("SHARED.NOT_AVAILABLE" | translate)
+          }}
+        </p>
+      </span>
+
+      <span>
+        <p>{{ "SOCIAL.TOTAL_COMMENTS_NUMBER" | translate }}</p>
+        <p>{{ userDetails?.totals.comments }}</p>
+      </span>
+
+      <span>
+        <p>{{ "SOCIAL.TOTAL_LIKES_NUMBER" | translate }}</p>
+        <p>{{ userDetails?.totals.likes }}</p>
+      </span>
+
+      <span>
+        <p>
+          {{ "MEALS_PLAN.NUMBER_OF_I_AM_HUNGRY_CLICKED_THIS_WEEK" | translate }}
+        </p>
+        <p>{{ userDetails?.currentPlan?.numberOfIAmHungryClicked ?? 0 }}</p>
+      </span>
+    </div>
+
+    <div class="w-100 d-flex flex-fill">
+      <div class="user-meals" *ngIf="userDetails.isSubscribed">
+        <div *ngxPermissionsOnly="'canViewAppUserContactInfo'" class="section">
+          <div class="p-3 d-flex justify-content-between align-items-center">
+            <p class="m-0">{{ "MEALS_PLAN.TITLE" | translate }}</p>
+
+            <div class="w-75" *ngIf="userDetails?.isSubscribed">
+              <button
+                *ngxPermissionsOnly="'canAssignMealPlanToAppUsers'"
+                mat-flat-button
+                color="primary"
+                class="w-100 radius-4"
+                (click)="
+                  router.navigateByUrl(
+                    '/plans/templates/user/' + userDetails?.id
+                  )
+                "
+              >
+                {{ "MEALS_PLAN.CHOOSE_FROM_TEMPLATE" | translate }}
+              </button>
+            </div>
+
+            <!--          {{ "MEALS_PLAN.ADD_NEW_PLAN" | translate }}-->
+          </div>
+          <mat-tab-group class="w-100">
+            <div>
+              <mat-tab label="{{ 'MEALS_PLAN.CURRENT_PLAN' | translate }}">
+                <div class="mt-2">
+                  <app-day-of-week-tabs
+                    [(selectedDay)]="currentPlanSelectedDay"
+                  ></app-day-of-week-tabs>
+                  <ng-template
+                    [ngTemplateOutlet]="mealPlan"
+                    [ngTemplateOutletContext]="{
+                      plan: userDetails?.currentPlan
+                    }"
+                  ></ng-template>
+                </div>
+              </mat-tab>
+            </div>
+            <div>
+              <mat-tab label="{{ 'MEALS_PLAN.PREVIOUS_PLAN' | translate }}">
+                <div class="mt-2">
+                  <app-day-of-week-tabs
+                    [(selectedDay)]="lastPlanSelectedDay"
+                  ></app-day-of-week-tabs>
+                  <ng-template
+                    [ngTemplateOutlet]="mealPlan"
+                    [ngTemplateOutletContext]="{
+                      plan: userDetails?.previousPlan
+                    }"
+                  ></ng-template>
+                </div>
+              </mat-tab>
+            </div>
+          </mat-tab-group>
+        </div>
+      </div>
+      <div
+        class="d-flex justify-content-start align-items-center flex-column w-25"
+      >
+        <div class="section user-health">
+          <div class="user-health-header">
+            {{ "MOBILE_USERS.ALLERGIES_DISLIKES_RISKS" | translate }}
+          </div>
+          <div>
+            <div class="user-health-details">
+              <span class="user-health-details-key">{{
+                "MOBILE_USERS.ALLERGY" | translate
+              }}</span>
+              <span class="user-health-details-value">{{
+                userDetails?.allergies
+                  | arrayToString : ("SHARED.NOT_AVAILABLE" | translate)
+              }}</span>
+            </div>
+            <div class="user-health-details">
+              <span class="user-health-details-key">{{
+                "MOBILE_USERS.DISLIKE" | translate
+              }}</span>
+              <span class="user-health-details-value">{{
+                userDetails?.dislikes
+                  | arrayToString : ("SHARED.NOT_AVAILABLE" | translate)
+              }}</span>
+            </div>
+            <div class="user-health-details">
+              <span class="user-health-details-key">{{
+                "MOBILE_USERS.RISKS" | translate
+              }}</span>
+              <span class="user-health-details-value">{{
+                userDetails?.userRisks
+                  | arrayToString : ("SHARED.NOT_AVAILABLE" | translate)
+              }}</span>
+            </div>
+          </div>
+          <div class="w-100 d-flex justify-content-center">
+            <button class="nut-btn mb-3 px-3" (click)="openMoreDetailsDialog()">
+              {{ "MOBILE_USERS.MORE_INFO_LABEL" | translate }}
+            </button>
+          </div>
+        </div>
+        <div class="section user-health">
+          <div class="user-health-header">
+            {{ "MEALS_PLAN.LAST_USED_TEMPLATES" | translate }}
+          </div>
+          <div class="user-health-details">
+            <div *ngIf="userDetails?.lastUsedTemplates; let templates">
+              <p *ngFor="let template of templates">
+                {{ template.startDate | date : "dd/MM" }}
+                {{ template.templateName }}
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="section user-health">
+          <div class="user-health-header">
+            {{ "MOBILE_USERS.CURRENT_PLAN_NOTES" | translate }}
+          </div>
+          <div class="user-health-details">
+            {{
+              userDetails?.currentPlan?.notes ??
+                ("SHARED.NOT_AVAILABLE" | translate)
+            }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngxPermissionsOnly="'canBanAppUsers'">
+      <button
+        *ngIf="!userDetails.isBanned"
+        class="mt-2 ban-user"
+        (click)="banUser(userDetails.id)"
+      >
+        {{ "MOBILE_USERS.BAN_USER" | translate }}
+      </button>
+      <button
+        *ngIf="userDetails.isBanned"
+        class="mt-2 ban-user"
+        (click)="unBanUser(userDetails.id)"
+      >
+        {{ "MOBILE_USERS.UNBAN_USER" | translate }}
+      </button>
+    </div>
+
+    <a
+      class="message-icon"
+      href="https://dashboard.kommunicate.io/"
+      target="_blank"
+    >
+      <i class="fas fa-message"></i>
+    </a>
+  </div>
+</div>
+
+<ng-template #mealPlan let-item="plan">
+  <div *ngIf="item; else noPlan">
+    <div class="p-3">
+      <div class="row">
+        <ng-template
+          [ngTemplateOutlet]="meal"
+          [ngTemplateOutletContext]="{
+            meal: item[currentPlanSelectedDay].mens[mealTypes.Breakfast],
+            mealType: mealTypes.Breakfast
+          }"
+        ></ng-template>
+        <ng-template
+          [ngTemplateOutlet]="meal"
+          [ngTemplateOutletContext]="{
+            meal: item[currentPlanSelectedDay].mens[mealTypes.Lunch],
+            mealType: mealTypes.Lunch
+          }"
+        ></ng-template>
+        <ng-template
+          [ngTemplateOutlet]="meal"
+          [ngTemplateOutletContext]="{
+            meal: item[currentPlanSelectedDay].mens[mealTypes.Dinner],
+            mealType: mealTypes.Dinner
+          }"
+        ></ng-template>
+      </div>
+      <div class="row">
+        <ng-template
+          [ngTemplateOutlet]="meal"
+          [ngTemplateOutletContext]="{
+            meal: item[currentPlanSelectedDay].mens[mealTypes.Snacks],
+            mealType: mealTypes.Snacks
+          }"
+        ></ng-template>
+        <ng-template
+          [ngTemplateOutlet]="meal"
+          [ngTemplateOutletContext]="{
+            meal: item[currentPlanSelectedDay].mens[mealTypes.Supplements],
+            mealType: mealTypes.Supplements
+          }"
+        ></ng-template>
+
+        <ng-template
+          [ngTemplateOutlet]="meal"
+          [ngTemplateOutletContext]="{
+            meal: item[currentPlanSelectedDay].mens[mealTypes.ExtraBites],
+            mealType: mealTypes.ExtraBites
+          }"
+        ></ng-template>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #noPlan>
+  <div
+    class="w-100 h-100 my-5 d-flex justify-content-center align-items-center flex-column"
+  >
+    <img
+      src="../../../../assets/media/no-data-placeholder.png"
+      alt="No Plan Yet"
+    />
+
+    <div class="d-flex justify-content-center align-items-center flex-column">
+      <span>Meal plan will be</span>
+      <span>shown here</span>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #meal let-item="meal" let-currentMealType="mealType">
+  <div
+    *ngIf="meal && item?.mealNames"
+    class="col meal-container d-flex flex-column justify-content-between"
+  >
+    <div>
+      <p>
+        {{
+          "MEALS.MEALS_LABELS." +
+            (currentMealType | enumKey : mealTypes | uppercase) | translate
+        }}
+      </p>
+      <p *ngFor="let mealName of item?.mealNames || []">{{ mealName }}</p>
+    </div>
+
+    <div>
+      <hr />
+      <div class="d-flex justify-content-start align-items-center flex-wrap">
+        <span *ngIf="item?.isEaten" class="meal-badge eaten-badge">
+          Eaten
+        </span>
+        <span *ngIf="item?.isSwapped" class="meal-badge swapped-badge">
+          Swaped
+        </span>
+        <span *ngIf="item?.isSkipped" class="meal-badge skipped-badge">
+          Skipped
+        </span>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #noPermission>
+  <div class="w-100 h-100 d-flex justify-content-center align-content-center">
+    You don't have correct Perrmission
+  </div>
+</ng-template>

@@ -1,0 +1,40 @@
+<div>
+  <form [formGroup]="makePremiumForm">
+    <mat-form-field class="w-100">
+      <mat-label>{{ "MOBILE_USERS.END_DATE" | translate }}</mat-label>
+      <input
+        matInput
+        formControlName="endDate"
+        [matDatepicker]="picker"
+        [matDatepickerFilter]="minDateFilter"
+      />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field class="w-100">
+      <mat-label>{{ "MOBILE_USERS.AMOUNT" | translate }}</mat-label>
+      <input
+        matInput
+        type="number"
+        formControlName="amount"
+        min="1"
+      />
+    </mat-form-field>
+
+    <div>
+      <button
+        [disabled]="makePremiumForm.invalid || isLoading"
+        mat-raised-button
+        (click)="makePremium()"
+        class="margin-end-3"
+        color="primary"
+      >
+        <span class="text-white">{{ "MOBILE_USERS.MAKE_PREMIUM" | translate }}</span>
+      </button>
+      <button [disabled]="isLoading" [matDialogClose]="false" mat-raised-button>
+        {{ "SHARED.CANCEL" | translate }}
+      </button>
+    </div>
+  </form>
+</div>

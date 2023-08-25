@@ -1,0 +1,204 @@
+<div class="bg-white mat-elevation-z8">
+  <app-details-header
+    [headerTitle]="meal?.id ? 'Edit Meal' : 'Add New Meal'"
+  ></app-details-header>
+  <form
+    [formGroup]="mealForm"
+    class="d-flex justify-content-center align-items-start w-100 p-3 pt-0 m-0"
+  >
+    <div
+      class="w-100 same-width-flex d-flex flex-column justify-content-center align-items-center padding-end-2"
+    >
+      <mat-form-field class="w-100">
+        <mat-label>{{ "MEALS.NAME" | translate }}</mat-label>
+        <input matInput formControlName="name" maxlength="25" />
+        <mat-error>{{
+          "VALIDATION_ERRORS.INVALID_VALUE" | translate
+        }}</mat-error>
+      </mat-form-field>
+
+      <div class="w-100">
+        <app-attachment-button
+          formControlName="coverImage"
+        ></app-attachment-button>
+      </div>
+
+      <mat-form-field
+        *ngIf="selectedMealType != mealType.Supplements"
+        class="w-100"
+      >
+        <mat-label>{{ "MEALS.STEPS" | translate }}</mat-label>
+        <textarea
+          class="info-area"
+          matInput
+          formControlName="steps"
+        ></textarea>
+        <mat-error>{{
+          "VALIDATION_ERRORS.INVALID_VALUE" | translate
+        }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="w-100">
+        <mat-label>{{ "MEALS.ALLERGIES" | translate }}</mat-label>
+        <input matInput formControlName="allergies" maxlength="10" />
+        <mat-error>{{
+          "VALIDATION_ERRORS.INVALID_VALUE" | translate
+        }}</mat-error>
+      </mat-form-field>
+
+      <button
+        class="w-100"
+        mat-flat-button
+        color="primary"
+        [disabled]="mealForm.invalid"
+        (click)="submit()"
+      >
+        {{ (meal?.id ? "SHARED.EDIT" : "SHARED.ADD") | translate }}
+      </button>
+    </div>
+    <div class="same-width-flex padding-start-2">
+      <mat-form-field class="w-100">
+        <mat-label>{{ "MEALS.LABEL" | translate }}</mat-label>
+        <mat-select
+          formControlName="label"
+          (valueChange)="mealTypeChanged($event)"
+        >
+          <mat-option *ngFor="let type of mealTypeKeys" [value]="type">
+            {{ "MEALS.MEAL_TYPE_ENUM." + type.toString() | translate }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div class="d-flex justify-content-center align-items-center">
+        <mat-form-field
+          *ngIf="selectedMealType != mealType.Supplements"
+          class="w-100 margin-end-2"
+        >
+          <mat-label>{{ "MEALS.PREP_TIME" | translate }}</mat-label>
+          <input matInput formControlName="prepTime" maxlength="7" />
+          <mat-error>{{
+            "VALIDATION_ERRORS.INVALID_VALUE" | translate
+          }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field
+          *ngIf="selectedMealType != mealType.Supplements"
+          class="w-100"
+        >
+          <mat-label>{{ "MEALS.COOK_TIME" | translate }}</mat-label>
+          <input matInput formControlName="cockingTime" maxlength="7" />
+          <mat-error>{{
+            "VALIDATION_ERRORS.INVALID_VALUE" | translate
+          }}</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div
+        *ngIf="selectedMealType != mealType.Supplements"
+        class="d-flex flex-column"
+      >
+        <div>
+          <p>{{ "MEALS.INGREDIENTS" | translate }}</p>
+          <div formArrayName="ingredients">
+            <div
+              *ngFor="let control of ingredientsForm.controls; let i = index"
+              [formGroupName]="i"
+              class="d-flex justify-content-center align-items-center"
+            >
+              <mat-form-field class="w-100">
+                <mat-label>{{
+                  "MEALS.INGREDIENT.QUANTITY" | translate
+                }}</mat-label>
+                <input
+                  type="number"
+                  matInput
+                  formControlName="quantity"
+                  min="0"
+                />
+                <mat-error>{{
+                  "VALIDATION_ERRORS.INVALID_VALUE" | translate
+                }}</mat-error>
+              </mat-form-field>
+              <mat-form-field class="w-100 mx-1">
+                <mat-label>{{ "MEALS.INGREDIENT.UNIT" | translate }}</mat-label>
+                <mat-select formControlName="unitType">
+                  <mat-option *ngFor="let type of ingredientUnitTypeKeys" [value]="ingredientUnitType[type]">
+                    {{ "MEALS.MEAL_UNIT_TYPE." + type.toString() | translate }}
+                  </mat-option>
+                </mat-select>
+
+                <mat-error>{{
+                  "VALIDATION_ERRORS.INVALID_VALUE" | translate
+                }}</mat-error>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>{{ "MEALS.INGREDIENT.NAME" | translate }}</mat-label>
+                <div
+                  class="custom-wrapper-example"
+                  matAutocompleteOrigin
+                  #origin="matAutocompleteOrigin"
+                >
+                  <input
+                    #input
+                    (focus)="searchIngredients(input.value)"
+                    (input)="
+                      $any(ingredientsForm.controls[i]).controls[
+                        'name'
+                      ].setErrors({
+                        invalid: true
+                      });
+                      searchIngredients(input.value)
+                    "
+                    matInput
+                    [formControl]="
+                      $any(ingredientsForm.controls[i]).controls['name']
+                    "
+                    [matAutocomplete]="auto"
+                    [matAutocompleteConnectedTo]="origin"
+                  />
+                </div>
+
+                <mat-autocomplete
+                  #auto="matAutocomplete"
+                  (optionSelected)="
+                    input.value = $event.option.value;
+                    $any(ingredientsForm.controls[i]).controls[
+                      'name'
+                    ].setErrors(null)
+                  "
+                >
+                  <mat-option
+                    *ngIf="input.value.length > 0"
+                    (click)="addIngredient(input.value)"
+                    [value]="input.value"
+                    >{{ "MEALS.NOT_EXIST_INGREDIENT" | translate }}</mat-option
+                  >
+                  <mat-option
+                    *ngFor="let option of ingredients$ | async"
+                    [value]="option"
+                    >{{ option }}</mat-option
+                  >
+                </mat-autocomplete>
+                <mat-error>{{
+                  "VALIDATION_ERRORS.INVALID_VALUE" | translate
+                }}</mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+
+        <button
+          class="w-100"
+          mat-flat-button
+          color="primary"
+          (click)="
+            $event.preventDefault();
+            ingredientsForm.push(createIngredientGroup())
+          "
+        >
+          {{ "MEALS.ADD_MORE_INGREDIENTS" | translate }}
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

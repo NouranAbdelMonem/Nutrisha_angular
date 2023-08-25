@@ -1,0 +1,100 @@
+<div
+  *ngIf="mealDetails$ | async; let mealDetails"
+  class="p-5 w-100 d-flex flex-column justify-content-center align-items-center"
+>
+  <div
+    class="w-100 alert alert-primary"
+    *ngIf="mealDetails?.id && !mealDetails.canEdit"
+  >
+    {{ "MEALS.PART_OF_MEAL_PLAN" | translate }}
+  </div>
+
+  <div class="w-100 d-flex justify-content-start">
+    <div class="w-100 mb-3 d-flex justify-content-start flex-wrap">
+      <h2 class="meal-name text-break">{{ mealDetails.name }}</h2>
+      <div
+        *ngIf="
+          mealDetails.mealType == mealType.Supplements;
+          else nonSupplements
+        "
+      ></div>
+      <ng-template #nonSupplements>
+        <div class="vertical-breaker"></div>
+        <div class="mx-3 d-flex flex-column justify-content-center">
+          <h2>{{ mealDetails.preparingTime }}</h2>
+          <p>{{ "MEALS.PREP_TIME" | translate }}</p>
+        </div>
+        <div class="vertical-breaker"></div>
+        <div class="mx-3 d-flex flex-column justify-content-center">
+          <h2>{{ mealDetails.cockingTime }}</h2>
+          <p>{{ "MEALS.COOK_TIME" | translate }}</p>
+        </div>
+      </ng-template>
+      <div class="vertical-breaker"></div>
+      <div class="mx-3 d-flex flex-column justify-content-center">
+        <h2>
+          {{
+            "MEALS.MEALS_LABELS." + (mealType[mealDetails.mealType] | uppercase)
+              | translate
+          }}
+        </h2>
+        <p>{{ "MEALS.LABEL" | translate }}</p>
+      </div>
+    </div>
+    <div>
+      <button mat-icon-button [matMenuTriggerFor]="optionsMenu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #optionsMenu="matMenu">
+        <button mat-menu-item (click)="editMeal()">
+          {{ "SHARED.EDIT" | translate }}
+        </button>
+        <button *ngIf="mealDetails?.id && mealDetails.canEdit" mat-menu-item class="text-danger" (click)="deleteMeal()">
+          {{ "SHARED.DELETE" | translate }}
+        </button>
+      </mat-menu>
+    </div>
+  </div>
+
+  <img
+    [alt]="mealDetails.name"
+    [src]="mealDetails.coverImage"
+    class="meal-image w-100"
+  />
+
+  <div class="w-100 d-flex justify-content-start align-items-start mt-3">
+    <div
+      *ngIf="mealDetails.mealType != mealType.Supplements"
+      class="meal-container margin-end-3"
+    >
+      <h2 class="m-0">{{ "MEALS.INGREDIENTS" | translate }}</h2>
+      <p
+        class="text-break"
+        *ngFor="let ingredient of mealDetails.ingredients; let index = index"
+      >
+        {{ index + 1 }}- {{ ingredient.quantity }}
+
+        {{
+          "MEALS.MEAL_UNIT_TYPE." + ingredientUnitType[ingredient.unitType]
+            | translate
+        }}
+        {{ ingredient.ingredientName }}
+      </p>
+    </div>
+    <div
+      *ngIf="mealDetails.mealType != mealType.Supplements"
+      class="meal-container"
+    >
+      <h2 class="m-0">{{ "MEALS.STEPS" | translate }}</h2>
+      <p class="text-break">
+        {{ mealDetails.mealSteps }}
+      </p>
+    </div>
+    <div class="meal-container margin-start-3">
+      <h2 class="m-0">{{ "MEALS.ALLERGIES" | translate | translate }}</h2>
+      <p class="text-break">
+        {{ mealDetails.allergies }}
+      </p>
+    </div>
+  </div>
+</div>

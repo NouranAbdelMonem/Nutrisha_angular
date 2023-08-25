@@ -1,0 +1,85 @@
+<div>
+  <div class="mat-elevation-z8 list-container">
+    <app-list-header
+      (addClicked)="this.router.navigateByUrl('meals/add')"
+      [permissions]="'canCreateMeals'"
+      [searchTerm]="search$"
+      [withAddButton]="true"
+      headerTitle="{{ 'MEALS.NAV_TITLE' | translate }}"
+    >
+    </app-list-header>
+
+    <div *ngIf="meals$ | async; let meals">
+      <table [dataSource]="meals" class="w-100" mat-table>
+        <ng-container matColumnDef="icon">
+          <th *matHeaderCellDef mat-header-cell></th>
+          <td *matCellDef="let element" mat-cell>
+            <span style="color: green; font-size: 1.5rem">
+              <i class="fa-solid fa-mug-saucer"></i>
+            </span>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+          <th *matHeaderCellDef mat-header-cell>
+            {{ "MEALS.NAME" | translate }}
+          </th>
+          <td *matCellDef="let element" mat-cell>
+            {{ element.name }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="label">
+          <th *matHeaderCellDef mat-header-cell>
+            {{ "MEALS.LABEL" | translate }}
+          </th>
+          <td *matCellDef="let element" mat-cell>
+            {{
+              "MEALS.MEALS_LABELS." + (mealType[element.mealType] | uppercase)
+                | translate
+            }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="preparingTime">
+          <th *matHeaderCellDef mat-header-cell>
+            {{ "MEALS.PREP_TIME" | translate }}
+          </th>
+          <td *matCellDef="let element" mat-cell>
+            {{ element.preparingTime }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="cookingTime">
+          <th *matHeaderCellDef mat-header-cell>
+            {{ "MEALS.COOK_TIME" | translate }}
+          </th>
+          <td *matCellDef="let element" mat-cell>
+            {{ element.cookingTime }}
+          </td>
+        </ng-container>
+        <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+        <tr
+          (click)="this.router.navigateByUrl('/meals/' + row.id)"
+          *matRowDef="let row; columns: displayedColumns"
+          class="mat-row-hover"
+          mat-row
+        ></tr>
+      </table>
+      <app-no-data-placeholder
+        [data]="meals"
+        classes="my-3"
+      ></app-no-data-placeholder>
+    </div>
+
+    <mat-paginator
+      #paginator
+      (page)="loadArticles()"
+      [length]="totalRows$ | async"
+      [pageSizeOptions]="[1, 5, 10, 25, 100]"
+      [pageSize]="10"
+      [showFirstLastButtons]="true"
+    >
+    </mat-paginator>
+  </div>
+</div>

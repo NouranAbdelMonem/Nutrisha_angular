@@ -1,0 +1,226 @@
+<div class="bg-white mat-elevation-z8 m-3">
+  <div
+    class="w-100 alert alert-primary"
+    *ngIf="planDetails?.id && planDetails.isUsedInAnotherMealPlan"
+  >
+    {{ "MEALS_PLAN.IS_PARENT_TEMPLATE_MESSAGE" | translate }}
+  </div>
+
+  <div class="px-3 pt-3 w-100 d-flex justify-content-between">
+    <h3 class="nav-header__text fw-bold m-0">
+      {{
+        planDetails?.templateName
+          ? planDetails?.templateName
+          : ("MEALS.ADD_NEW_MEAL_PLAN" | translate)
+      }}
+    </h3>
+
+    <div
+      class="d-flex justify-content-between align-items-center"
+      *ngIf="planDetails?.createdBy"
+    >
+      <img
+        class="user-image"
+        appProfileImage
+        [imageUrl]="planDetails?.createdBy.personalImage"
+        [circularWidth]="30"
+        [alt]="planDetails.createdBy.name"
+      />
+      <span class="margin-start-1">{{
+        planDetails.createdBy.name ?? "N/A"
+      }}</span>
+    </div>
+  </div>
+
+  <div class="p-3">
+    <app-day-of-week-tabs
+      [selectedDay]="dayOfWeek.SATURDAY"
+      (selectedDayChange)="daySelected($event)"
+    ></app-day-of-week-tabs>
+
+    <form class="mt-2" [formGroup]="planForm">
+      <div class="w-100 d-flex justify-content-between align-items-stretch">
+        <div class="w-50">
+          <ng-template
+            *ngFor="let day of dayOfWeekValues"
+            [ngTemplateOutlet]="dayTemplate"
+            [ngTemplateOutletContext]="{
+              day: day,
+              formGroup: planForm.controls[day]
+            }"
+          ></ng-template>
+        </div>
+
+        <div class="w-50 h-100 margin-start-1 d-flex flex-column">
+          <mat-form-field>
+            <mat-label>{{ "SHARED.NOTES" | translate }}</mat-label>
+            <textarea
+              class="notes h-100"
+              matInput
+              formControlName="notes"
+            ></textarea>
+            <mat-error>{{
+              "VALIDATION_ERRORS.INVALID_VALUE" | translate
+            }}</mat-error>
+          </mat-form-field>
+
+          <button
+            *ngIf="
+              planDetails?.id &&
+              planDetails.isTemplate &&
+              !planDetails.isUsedInAnotherMealPlan &&
+              (planDetails.createdBy.id == currentUserId || isOwned)
+            "
+            mat-raised-button
+            color="warn"
+            (click)="deleteMealPlan()"
+          >
+            {{ "SHARED.DELETE" | translate }}
+          </button>
+        </div>
+      </div>
+      <div class="w-100 d-flex justify-content-between align-items-center">
+        <div
+          *ngIf="!isFromTemplatePage"
+          class="d-flex justify-content-start align-items-center w-100"
+        >
+          <mat-form-field appearance="fill">
+            <mat-label>Start Date</mat-label>
+            <input
+              matInput
+              [matDatepicker]="picker"
+              [formControl]="startDateControl"
+              [min]="currentDate"
+            />
+            <!--            <mat-hint>MM/DD/YYYY</mat-hint>-->
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
+          <button
+            mat-flat-button
+            color="primary"
+            class="margin-start-1 flex-grow-1 add-plan w-100"
+            [disabled]="
+              planForm.invalid || startDateControl.invalid || isPlanEdited
+            "
+            (click)="submit()"
+          >
+            {{ "MEALS_PLAN.ASSIGN_TO_USER" | translate }}
+          </button>
+        </div>
+
+        <button
+          class="btn add add-template w-100"
+          (click)="openSaveAsTemplate()"
+          [disabled]="planForm.invalid"
+        >
+          {{
+            (planDetails?.isTemplate &&
+            currentUserId == planDetails?.createdBy.id
+              ? "MEALS_PLAN.UPDATE_TEMPLATE"
+              : "MEALS_PLAN.ADD_AS_TEMPLATE"
+            ) | translate
+          }}
+        </button>
+      </div>
+    </form>
+
+    <div class="mt-3">
+      <span class="fw-bold">{{ "MEALS.ADD_NEW_MEAL" | translate }}</span>
+      &nbsp;
+      <a class="app-link" href="/meals">{{ "SHARED.HERE" | translate }}</a>
+    </div>
+  </div>
+</div>
+
+<ng-template #dayTemplate let-day="day" let-form="formGroup">
+  <div
+    [formGroup]="form"
+    [ngClass]="selectedDay == day.toString() ? 'd-flex flex-column' : 'd-none'"
+  >
+    <div
+      *ngFor="
+        let label of ['breakfast', 'lunch', 'dinner', 'snacks', 'supplements']
+      "
+    >
+      <div
+        class="d-flex justify-content-start"
+        *ngIf="form.controls[label]; let formArray"
+      >
+        <div
+          class="w-100 d-flex flex-column justify-content-start align-items-start"
+        >
+          <mat-form-field
+            #formField
+            class="margin-end-1 w-100"
+            [ngClass]="formArray.touched && formArray.invalid ? 'error' : ''"
+          >
+            <mat-label
+              >{{ "MEALS.MEALS_LABELS." + (label | uppercase) | translate }}
+              *
+            </mat-label>
+            <mat-chip-list #chipList>
+              <div *ngFor="let meal of formArray.value; let valueIndex = index">
+                <mat-chip
+                  *ngIf="meal"
+                  (removed)="formArray.removeAt(valueIndex); mealInput.focus()"
+                >
+                  {{ meal.name }}
+                  <button matChipRemove>
+                    <mat-icon>cancel</mat-icon>
+                  </button>
+                </mat-chip>
+              </div>
+              <input
+                matInput
+                #mealInput
+                [readOnly]="formArray.length === MAX_MEAL_PER_MENU"
+                [matAutocomplete]="auto"
+                [matChipInputFor]="chipList"
+                (focusout)="
+                  formArray.markAsTouched();
+                  $event.stopPropagation();
+                  searchMeals(label, mealInput.value)
+                "
+                (focus)="searchMeals(label, mealInput.value)"
+                (input)="searchMeals(label, mealInput.value)"
+                required
+              />
+            </mat-chip-list>
+            <mat-autocomplete
+              #auto="matAutocomplete"
+              (optionSelected)="
+                appendMealFormToFormArray(formArray, $event.option.value);
+                mealInput.value = ''
+              "
+            >
+              <div *ngIf="meals$ | async; let meals">
+                <mat-option *ngFor="let meal of meals" [value]="meal">
+                  {{ meal.name }}
+                </mat-option>
+              </div>
+            </mat-autocomplete>
+            <mat-hint
+              *ngIf="formArray.touched && formArray.invalid"
+              style="color: red"
+              >{{ "VALIDATION_ERRORS.REQUIRED" | translate }}</mat-hint
+            >
+          </mat-form-field>
+        </div>
+        <!--        <button-->
+        <!--          class="h-75 mt-2"-->
+        <!--          mat-flat-button-->
+        <!--          color="primary"-->
+        <!--          [hidden]="formArray.length === 3"-->
+        <!--          (click)="appendMealFormToFormArray(formArray)"-->
+        <!--        >-->
+        <!--          <i class="fa fa-add"></i>-->
+        <!--        </button>-->
+      </div>
+    </div>
+  </div>
+</ng-template>

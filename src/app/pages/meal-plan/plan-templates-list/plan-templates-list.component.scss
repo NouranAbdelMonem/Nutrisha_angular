@@ -1,0 +1,37 @@
+.mat-column-icon {
+  padding: 0 !important;
+  max-width: 1rem !important;
+}
+
+.icon-container {
+  color: white;
+  background-color: #215121;
+  width: 36px;
+  height: 36px;
+  border-radius: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+}
+.mat-column-icon {
+  width: 5%;
+  max-width:  5%;
+  min-width:  5%;
+}
+.mat-column-name {
+  width: 50%;
+  max-width: 50%;
+  min-width: 50%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mat-column-ownerName {
+  max-width: 50%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+

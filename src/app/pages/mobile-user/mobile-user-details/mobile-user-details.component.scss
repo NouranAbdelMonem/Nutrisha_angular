@@ -1,0 +1,156 @@
+.details-container {
+  position: relative;
+
+  .message-icon {
+    font-size: 1.5rem;
+    position: fixed;
+    bottom: 40px;
+    margin-inline-start: 80%
+  }
+}
+
+.base-info-container {
+  max-width: 75%;
+
+  .info-section {
+    max-width: 40%;
+  }
+}
+
+.user-image {
+  height: 50px;
+  width: 50px;
+  border-radius: 25px;
+  margin-inline-end: 0.3rem;
+}
+
+.user-measurements-container {
+  background: #215121;
+  border-radius: 19px;
+
+  padding: 5px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.vertical-line {
+  mix-blend-mode: normal;
+  opacity: 0.6;
+  background-color: #ffffff;
+  height: 50px;
+  width: 1px;
+}
+
+.section {
+  background: #fafafa;
+  border-radius: 19px;
+  margin: 5px 0;
+}
+
+.user-meals {
+  margin-inline-end: 0.7rem;
+  flex: 2;
+}
+
+.user-health {
+  //min-height: 33%;
+  width: 100%;
+}
+
+.user-health-header {
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.user-health-details {
+  margin: 0 2rem 1rem;
+  display: flex;
+  justify-content: start;
+
+  .user-health-details-value {
+    margin-inline-start: 1rem;
+  }
+}
+
+.user-health-details-key {
+  max-width: 50px;
+  min-width: 50px;
+  text-wrap: normal;
+}
+
+.user-measurement-data {
+  padding: 10px;
+  color: white;
+
+  & > * {
+    text-align: center;
+  }
+}
+
+.user-measurement-title {
+  white-space: nowrap;
+}
+
+.ban-user {
+  padding: 12px 6px;
+  width: 50%;
+  color: #c92a2a;
+  font-weight: 500;
+  border: 1px solid #c92a2a;
+  border-radius: 49px;
+  background-color: transparent;
+}
+
+::ng-deep.mat-tab-label,
+::ng-deep.mat-tab-label-active {
+  min-width: 49% !important;
+}
+
+.meal-container {
+  position: relative;
+  margin: 5px;
+  padding: 1rem;
+  background: #ffffff;
+  border-radius: 19px;
+  //height: 100px;
+}
+
+.meal-badge {
+  border-radius: 8px;
+  padding: 8px 0;
+  padding-inline-end: 16px;
+  padding-inline-start: 10px;
+  margin-inline-end: 5px;
+  font-weight: 900;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.swapped-badge {
+  color: white;
+  background-color: #ffcb51;
+}
+
+.eaten-badge {
+  //color: 'black,
+  background-color: #d5ded5;
+}
+
+.skipped-badge {
+  color: #c3c0c0;
+  background-color: rgba(255, 114, 90, 0.1);
+}
+
+.meal-breaker {
+  position: relative;
+  top: 90%;
+}
+
+.manual-subscription {
+  color: #215121;
+}
+
+.manual-subscription-icon {
+  font-size: 1.2rem;
+}

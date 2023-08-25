@@ -1,0 +1,25 @@
+<form
+  class="d-flex flex-column justify-content-center align-items-center form"
+  [formGroup]="form"
+>
+  <div>
+    <span *ngIf="plan.parentTempletas">
+      <span *ngFor="let template of plan.parentTempletas">
+        {{ template }} -
+      </span>
+    </span>
+
+    <mat-form-field appearance="standard">
+      <mat-label> {{ "MEALS_PLAN.TEMPLATE_NAME" | translate }} </mat-label>
+      <input matInput required formControlName="name"  maxlength="20"/>
+      <mat-error>{{ "VALIDATION_ERRORS.INVALID_VALUE" | translate }}</mat-error>
+    </mat-form-field>
+  </div>
+  <button
+    class="btn w-75 save mt-2"
+    [disabled]="form.invalid"
+    (click)="submit()"
+  >
+    {{ (isEdit ? "SHARED.EDIT" : "SHARED.ADD") | translate }}
+  </button>
+</form>

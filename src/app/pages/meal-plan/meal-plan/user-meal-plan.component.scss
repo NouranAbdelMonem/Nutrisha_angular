@@ -1,0 +1,33 @@
+.add {
+  padding: 6px 16px;
+  border-radius: 49px;
+}
+.add-template {
+  background-color: white;
+  border: 1px solid #215121;
+  color: #215121;
+}
+
+.add-plan {
+  border-radius: 49px;
+  margin-inline-end: 2%;
+}
+
+.notes {
+  min-height: 326px;
+  max-height: 326px;
+}
+
+/* Border */
+.error {
+  ::ng-deep {
+    .mat-form-field-appearance-outline .mat-form-field-outline {
+      border-color: red !important;
+    }
+  }
+}
+
+::ng-deep .mat-form-field-underline,
+::ng-deep .mat-form-field-ripple {
+  border-color: red !important;
+}

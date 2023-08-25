@@ -1,0 +1,20 @@
+.file-list {
+  border: 2px solid #cfd4dd;
+  border-radius: 5px;
+  min-height: 50%;
+  min-width: 50%;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.section {
+  background: #fafafa;
+  border-radius: 19px;
+  padding: 10px;
+  min-height: 50%;
+}
+
+.details {
+  white-space: nowrap;
+}

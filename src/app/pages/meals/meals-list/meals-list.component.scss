@@ -1,0 +1,24 @@
+.mat-header-cell {
+  background: #2a3042;
+  color: white;
+}
+
+.mat-column-name {
+  max-width: 300px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+.mat-column-preparingTime {
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mat-column-cookingTime {
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+

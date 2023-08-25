@@ -1,0 +1,108 @@
+<div *ngIf="userPersonalData">
+  <p>{{ "MOBILE_USERS.PERSONAL_DETAILS.LABEL" | translate }}</p>
+  <div class="section mb-2">
+    <div
+      class="d-flex justify-content-between align-items-start mb-2 margin-end-4"
+    >
+      <div>
+        <p>
+          <span>{{
+            "MOBILE_USERS.PERSONAL_DETAILS.TARGET_WEIGHT" | translate
+          }}</span
+          >: <span class="details">{{ userPersonalData.targetWeight }}</span>
+        </p>
+        <p>
+          <span>{{
+            "MOBILE_USERS.PERSONAL_DETAILS.AVERAGE_MEALS_PER_DAY" | translate
+          }}</span
+          >:
+          <span class="details">{{
+            userPersonalData.numberOfMealsPerDay
+          }}</span>
+        </p>
+        <p>
+          <span>{{
+            "MOBILE_USERS.PERSONAL_DETAILS.ACTIVITY_LEVEL_LABEL" | translate
+          }}</span
+          >:
+          <span>{{
+            "MOBILE_USERS.PERSONAL_DETAILS.ACTIVITY_LEVEL_ENUM." +
+              userPersonalData.activityLevel | translate
+          }}</span>
+        </p>
+        <p>
+          <span>{{
+            "MOBILE_USERS.PERSONAL_DETAILS.MEDICATIONS" | translate
+          }}</span
+          >: <span class="details">{{ userPersonalData.medicineNames }}</span>
+        </p>
+        <p>
+          <span>{{
+            "MOBILE_USERS.PERSONAL_DETAILS.MAIN_EATING_TARGET_LABEL" | translate
+          }}</span
+          >:
+          <span>{{
+            "MOBILE_USERS.PERSONAL_DETAILS.MAIN_EATING_TARGET_ENUM." +
+              userPersonalData.eatReason | translate
+          }}</span>
+        </p>
+        <p>
+          <span>{{
+            "MOBILE_USERS.PERSONAL_DETAILS.REGULAR_PERIOD" | translate
+          }}</span
+          >:
+          <span>{{
+            "SHARED." + (userPersonalData.isRegularMeasurer ? "YES" : "NO")
+              | translate
+          }}</span>
+        </p>
+        <p>
+          <span>{{
+            "MOBILE_USERS.PERSONAL_DETAILS.PREGNANCY" | translate
+          }}</span
+          >:
+          <span>{{
+            "SHARED." + (userPersonalData.hasBaby ? "YES" : "NO") | translate
+          }}</span>
+        </p>
+        <p>
+          <span>{{
+            "MOBILE_USERS.PERSONAL_DETAILS.NUTRISHA_GOAL" | translate
+          }}</span
+          >: <span class="details">{{ userPersonalData.goal }}</span>
+        </p>
+      </div>
+      <div class="w-50 h-100">
+        <p class="mb-2">
+          {{ "MOBILE_USERS.PERSONAL_DETAILS.FILES_UPLOADED_LABEL" | translate }}
+        </p>
+        <div class="file-list">
+          <div class="p-2" *ngIf="userPersonalData?.files">
+            <div
+              class="d-flex justify-content-between align-items-center"
+              *ngFor="let file of userPersonalData.files"
+            >
+              <span class="text-truncate">{{ file.fileName }}</span>
+              <!--              <button-->
+              <!--                type="submit"-->
+              <!--                (click)="download(file.url, file.fileName)"-->
+              <!--              ></button>-->
+              <div class="d-flex">
+                <a [href]="file.url" [download]="file.fileName">
+                  <i class="fa fa-download"></i>
+                </a>
+                <!--                <mat-spinner *ngIf="file.loading" diameter="15"></mat-spinner>-->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-center">
+    <button class="nut-btn px-5 py-2" [mat-dialog-close]="null">
+      {{ "SHARED.CLOSE" | translate }}
+    </button>
+  </div>
+</div>

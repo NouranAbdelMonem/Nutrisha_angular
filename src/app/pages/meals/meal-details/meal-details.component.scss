@@ -1,0 +1,25 @@
+.meal-image {
+  max-width: 100%;
+  min-width: 100%;
+
+  border-radius: 20px;
+  max-height: 400px;
+  min-height: 400px;
+  object-fit: fill;
+}
+
+.meal-name {
+  margin-inline-end: 15%;
+}
+.meal-container {
+  padding: 5px;
+  background: #FAFAFA;
+  border-radius: 19px;
+  width: 25%;
+  text-wrap: normal;
+  min-height: 150px;
+}
+
+.text-break {
+  white-space: pre-line;
+}
