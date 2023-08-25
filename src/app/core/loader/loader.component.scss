@@ -1,0 +1,16 @@
+.app-loader {
+  position: absolute;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+}
+
+.loader {
+  position: absolute;
+  margin-inline-start: 48%;
+  top: 48%;
+}
