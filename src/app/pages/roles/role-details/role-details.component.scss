@@ -1,0 +1,14 @@
+.permission-check {
+  box-sizing: border-box;
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+}
+
+.has-permission {
+  background: #ff725a;
+}
+
+.no-permission {
+  background: #d9d9d9;
+}

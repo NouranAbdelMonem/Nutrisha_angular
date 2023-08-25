@@ -1,0 +1,18 @@
+.loading-container {
+  display: flex;
+  width: 100vw;
+  justify-content: center;
+  background-color: transparent;
+  position: fixed;
+  z-index: 999;
+  top: 0;
+}
+
+.loading {
+  padding: 14px 3rem;
+  color: #3d3a3a;
+  background-color: white;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  box-shadow: #807777 0 0 4px 0;
+}

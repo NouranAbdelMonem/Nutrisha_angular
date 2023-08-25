@@ -1,0 +1,185 @@
+<div class="m-3">
+  <h1>
+    {{ "ROLES.NAV_TITLE" | translate }}
+  </h1>
+
+  <div *ngIf="roleDetails" class="margin-start-3">
+    <div class="fs-4 mb-3">
+      {{ "PERMISSIONS." +  roleDetails.roleName + "_PERMISSIONS" | translate }}
+    </div>
+    <div>
+      <div>
+        <h2>{{ "PERMISSIONS.PARENT_NAMES.BLOGS" | translate }}</h2>
+        <!--        <ng-template [ngTemplateOutlet]="permission" [ngTemplateOutletContext]="{ permissionName:'canAccessBlogsModule' }"></ng-template>-->
+        <!--        <hr>-->
+        <ng-template
+          [ngTemplateOutlet]="permission"
+          [ngTemplateOutletContext]="{ permissionName: 'canViewBlogs' }"
+        ></ng-template>
+        <hr />
+        <ng-template
+          [ngTemplateOutlet]="permission"
+          [ngTemplateOutletContext]="{ permissionName: 'canCreateBlogs' }"
+        ></ng-template>
+        <hr />
+        <ng-template
+          [ngTemplateOutlet]="permission"
+          [ngTemplateOutletContext]="{ permissionName: 'canEditBlogs' }"
+        ></ng-template>
+        <hr />
+        <ng-template
+          [ngTemplateOutlet]="permission"
+          [ngTemplateOutletContext]="{ permissionName: 'canDeleteBlogs' }"
+        ></ng-template>
+        <hr />
+      </div>
+
+      <div>
+        <h2>{{ "PERMISSIONS.PARENT_NAMES.APP_USERS_DETAILS" | translate }}</h2>
+
+        <!--        <ng-template [ngTemplateOutlet]="permission" [ngTemplateOutletContext]="{ permissionName:'canAccessAppUsersModule' }"></ng-template>-->
+        <!--        <hr>-->
+        <ng-template
+          [ngTemplateOutlet]="permission"
+          [ngTemplateOutletContext]="{ permissionName: 'canViewAppUsers' }"
+        ></ng-template>
+        <hr />
+        <ng-template
+          [ngTemplateOutlet]="permission"
+          [ngTemplateOutletContext]="{
+            permissionName: 'canViewAppUserContactInfo'
+          }"
+        ></ng-template>
+        <hr />
+        <ng-template
+          [ngTemplateOutlet]="permission"
+          [ngTemplateOutletContext]="{ permissionName: 'canBanAppUsers' }"
+        ></ng-template>
+        <hr />
+        <ng-template
+          [ngTemplateOutlet]="permission"
+          [ngTemplateOutletContext]="{ permissionName: 'canModerateComments' }"
+        ></ng-template>
+        <hr />
+        <ng-template
+          [ngTemplateOutlet]="permission"
+          [ngTemplateOutletContext]="{ permissionName: 'canViewComments' }"
+        ></ng-template>
+        <hr />
+        <ng-template
+          [ngTemplateOutlet]="permission"
+          [ngTemplateOutletContext]="{ permissionName: 'canAssignPremiumFeaturesToAppUsers' }"
+        ></ng-template>
+        <hr />
+      </div>
+
+      <div>
+        <h2>{{ "PERMISSIONS.PARENT_NAMES.ADMIN_USERS" | translate }}</h2>
+        <!--        <ng-template [ngTemplateOutlet]="permission" [ngTemplateOutletContext]="{ permissionName:'canAccessAdminUsersModule' }"></ng-template>-->
+        <!--        <hr>-->
+        <ng-template
+          [ngTemplateOutlet]="permission"
+          [ngTemplateOutletContext]="{ permissionName: 'canViewAdminUsers' }"
+        ></ng-template>
+        <hr />
+        <ng-template
+          [ngTemplateOutlet]="permission"
+          [ngTemplateOutletContext]="{ permissionName: 'canCreateAdminUsers' }"
+        ></ng-template>
+        <hr />
+        <ng-template
+          [ngTemplateOutlet]="permission"
+          [ngTemplateOutletContext]="{ permissionName: 'canEditAdminUsers' }"
+        ></ng-template>
+        <hr />
+        <ng-template
+          [ngTemplateOutlet]="permission"
+          [ngTemplateOutletContext]="{ permissionName: 'canDeleteAdminUsers' }"
+        ></ng-template>
+        <hr />
+      </div>
+
+      <div>
+        <h2>{{ "PERMISSIONS.PARENT_NAMES.MEAL_PLANS" | translate }}</h2>
+        <!--        <ng-template [ngTemplateOutlet]="permission" [ngTemplateOutletContext]="{ permissionName:'canAccessMealPlansModule' }"></ng-template>-->
+        <!--        <hr>-->
+        <ng-template
+          [ngTemplateOutlet]="permission"
+          [ngTemplateOutletContext]="{
+            permissionName: 'canAssignMealPlanToAppUsers'
+          }"
+        ></ng-template>
+        <hr />
+        <ng-template
+          [ngTemplateOutlet]="permission"
+          [ngTemplateOutletContext]="{ permissionName: 'canViewMealPlans' }"
+        ></ng-template>
+        <hr />
+        <ng-template
+          [ngTemplateOutlet]="permission"
+          [ngTemplateOutletContext]="{
+            permissionName: 'canCreateParentMealPlans'
+          }"
+        ></ng-template>
+        <hr />
+        <ng-template
+          [ngTemplateOutlet]="permission"
+          [ngTemplateOutletContext]="{
+            permissionName: 'canCreateChildMealPlans'
+          }"
+        ></ng-template>
+        <hr />
+        <ng-template
+          [ngTemplateOutlet]="permission"
+          [ngTemplateOutletContext]="{ permissionName: 'canEditMealPlans' }"
+        ></ng-template>
+        <hr />
+      </div>
+
+      <div>
+        <h2>{{ "PERMISSIONS.PARENT_NAMES.MEALS" | translate }}</h2>
+        <!--        <ng-template [ngTemplateOutlet]="permission" [ngTemplateOutletContext]="{ permissionName:'canAccessMealsModule' }"></ng-template>-->
+        <!--        <hr>-->
+        <ng-template
+          [ngTemplateOutlet]="permission"
+          [ngTemplateOutletContext]="{ permissionName: 'canViewMeals' }"
+        ></ng-template>
+        <hr />
+        <ng-template
+          [ngTemplateOutlet]="permission"
+          [ngTemplateOutletContext]="{ permissionName: 'canCreateMeals' }"
+        ></ng-template>
+        <hr />
+        <ng-template
+          [ngTemplateOutlet]="permission"
+          [ngTemplateOutletContext]="{ permissionName: 'canEditMeals' }"
+        ></ng-template>
+        <hr />
+        <ng-template
+          [ngTemplateOutlet]="permission"
+          [ngTemplateOutletContext]="{ permissionName: 'canDeleteMeals' }"
+        ></ng-template>
+        <!--        <hr>-->
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #permission let-permissionName="permissionName">
+  <div class="margin-start-3 d-flex justify-content-start align-items-center">
+    <div class="margin-end-2">
+      <div
+        *ngIf="roleDetails.permissions.has(permissionName); else noPermissions"
+        class="permission-check has-permission d-flex justify-content-center align-items-center"
+      >
+        <i class="fa-solid fa-check fs-4" style="color: white"></i>
+      </div>
+
+      <ng-template #noPermissions>
+        <div class="permission-check no-permission"></div>
+      </ng-template>
+    </div>
+
+    <div>{{ "PERMISSIONS." + permissionName | translate }}</div>
+  </div>
+</ng-template>

@@ -1,0 +1,21 @@
+<div class="py-3 w-100 d-flex justify-content-between">
+  <div class="d-flex justify-content-between align-items-center">
+    <div class="list-header">
+      <div class="nav-header__text">{{ headerTitle }}</div>
+      <div *ngIf="withAddButton">
+        <div
+          *ngxPermissionsOnly="permissions"
+          (click)="addClicked.emit()"
+          class="margin-start-3 btn-add"
+        >
+          <i class="fa fa-add"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="margin-start-3 d-flex align-items-center">
+      <ng-content select="#customFilter"></ng-content>
+    </div>
+  </div>
+  <app-list-filters [searchTerm]="searchTerm"></app-list-filters>
+</div>

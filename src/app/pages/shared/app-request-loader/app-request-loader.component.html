@@ -1,0 +1,13 @@
+<ng-container *ngIf="requestLoadingService.requestLoading$ | async">
+  <div
+    class="w-100 loading-container"
+  >
+    <div class="loading">{{ "SHARED.LOADING" | translate }}...</div>
+  </div>
+
+  <div
+    class="w-100 loading-container"
+  >
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  </div>
+</ng-container>

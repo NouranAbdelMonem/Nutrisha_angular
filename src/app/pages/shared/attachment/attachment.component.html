@@ -1,0 +1,203 @@
+<div class="w-100">
+  <div class="card overflow-auto">
+    <div class="card-header">
+      {{ label | translate }}
+    </div>
+    <div
+      class="card-body d-flex justify-content-start align-items-center flex-wrap"
+    >
+      <div *ngIf="media && media.length; else noMedia">
+        <div class="d-flex align-items-center justify-content-start flex-wrap">
+          <div *ngFor="let media of media">
+            <div *ngIf="!media.removed" class="media-container media-preview">
+              <mat-icon
+                (click)="$event.preventDefault(); removeMedia(media)"
+                [hidden]="readOnly"
+                class="media-delete"
+                type="button"
+              >delete
+              </mat-icon>
+              <div
+                (click)="$event.preventDefault(); openImage(media)"
+                *ngIf="media.mediaType == 0"
+              >
+                <img
+                  [alt]="media.file?.name"
+                  [src]="media.url"
+                  class="media-img-preview"
+                />
+              </div>
+              <div
+                (click)="$event.preventDefault(); playVideo(media)"
+                *ngIf="media.mediaType == 1"
+                class="media-container media-video-preview add-media"
+              >
+                <div *ngIf="uploadProgress$ | async; let upload">
+                  <mat-progress-spinner
+                    *ngIf="media.file && upload.inProgress; else videoIcon"
+                    [diameter]="80"
+                    [value]="upload.progress"
+                    color="primary"
+                    mode="determinate"
+                  >
+                  </mat-progress-spinner>
+
+                  <ng-template #videoIcon>
+                    <i class="fa-brands fa-youtube display-5"></i>
+                  </ng-template>
+                </div>
+              </div>
+
+              <a
+                *ngIf="media.mediaType != 0 && media.mediaType != 1"
+                [href]="media.url"
+                class="extenal-link media-video-preview add-media display-5"
+                target="_blank"
+              >
+                <i class="fa-solid fa-up-right-from-square"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ng-template #noMedia>
+        <div *ngIf="readOnly">
+          <h3>{{ "ATTACHMENTS.NO_MEDIA" | translate }}</h3>
+        </div>
+      </ng-template>
+      <div
+        *ngIf="!readOnly"
+        class="d-flex justify-content-start align-items-center flex-wrap"
+      >
+        <div
+          *ngIf="
+            (supportType == 'image' || supportType == 'all') &&
+            mediaCount < maxLength
+          "
+        >
+          <input
+            #image
+            (change)="prepareImage(image.files)"
+            [accept]="imagesType"
+            [multiple]="multi"
+            hidden
+            type="file"
+          />
+          <button
+            (click)="
+              $event.preventDefault();
+              ngControl.control.markAllAsTouched();
+              image.click()
+            "
+            [style.border]="ngControl.control.touched && ngControl.control.invalid ? '3px red solid' : ''"
+            class="btn media-container add-media "
+          >
+            <span class="display-5">
+              <i class="fa-solid fa-file-image"></i>
+            </span>
+          </button>
+        </div>
+
+        <div
+          *ngIf="supportType != 'image' && mediaCount < maxLength"
+          class="d-flex justify-content-start align-items-center"
+        >
+          <div>
+            <input
+              #video
+              (change)="
+                prepareVideo(video.files);
+                !video.files || menuTrigger.closeMenu()
+              "
+              [accept]="videoType"
+              [multiple]="multi"
+              hidden
+              type="file"
+            />
+          </div>
+          <div>
+            <button
+              #menuTrigger="matMenuTrigger"
+              (click)="$event.preventDefault()"
+              [matMenuTriggerFor]="menu2"
+              class="btn media-container add-media"
+            >
+              <span class="display-5">
+                <i class="fa-solid fa-video-camera"></i>
+              </span>
+            </button>
+
+            <mat-menu
+              #menu2="matMenu"
+              (closed)="resetExternalForm(); video.files = null"
+            >
+              <ng-template matMenuContent>
+                <div
+                  (click)="$event.stopPropagation()"
+                  class="video-selector-container"
+                >
+                  <div class="video-selector-header">
+                    <h5>{{ "ATTACHMENTS.SELECT_VIDEO_HEADER" | translate }}</h5>
+                    <p>{{ "ATTACHMENTS.SELECT_VIDEO" | translate }}</p>
+                  </div>
+                  <mat-tab-group class="">
+                    <mat-tab
+                      class="margin-start-1"
+                      label="{{ 'ATTACHMENTS.VIDEO_UPLOAD' | translate }}"
+                    >
+                      <div class="video-upload-toggler">
+                        <button
+                          (click)="$event.preventDefault(); video.click()"
+                          color="primary"
+                          mat-flat-button
+                        >
+                          {{ "ATTACHMENTS.VIDEO_UPLOAD_TEXT" | translate }}
+                        </button>
+                      </div>
+                    </mat-tab>
+                    <mat-tab label="{{ 'ATTACHMENTS.VIDEO_LINK' | translate }}">
+                      <div class="video-upload-toggler">
+                        <mat-form-field
+                          (click)="$event.stopPropagation()"
+                          appearance="fill"
+                          class="w-75 margin-end-2"
+                        >
+                          <mat-label>{{
+                            "ATTACHMENTS.VIDEO_LINK" | translate
+                            }}</mat-label>
+                          <input
+                            #input
+                            [formControl]="externalLinkControl"
+                            matInput
+                            type="text"
+                            externalVideoValidator
+                          />
+                          <mat-error *ngIf="externalLinkControl.touched">{{
+                            "VALIDATION_ERRORS.INVALID_VALUE" | translate
+                            }}</mat-error>
+                        </mat-form-field>
+                        <button
+                          (click)="
+                            $event.preventDefault();
+                            addExternalMedia(input.value);
+                            menuTrigger.closeMenu()
+                          "
+                          [disabled]="externalLinkControl.invalid"
+                          class="mb-3"
+                          color="primary"
+                          mat-flat-button
+                        >
+                          {{ "SHARED.ADD" | translate }}
+                        </button>
+                      </div>
+                    </mat-tab>
+                  </mat-tab-group>
+                </div>
+              </ng-template>
+            </mat-menu>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
