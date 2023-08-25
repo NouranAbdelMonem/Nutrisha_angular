@@ -1,0 +1,74 @@
+<div>
+  <div class="mat-elevation-z8">
+    <app-list-header
+      [permissions]="'canCreateBlogs'"
+      [searchTerm]="search$"
+      [withAddButton]="true"
+      (addClicked)="this.router.navigateByUrl('polls/add')"
+      headerTitle="{{ 'POLLS.NAV_TITLE' | translate }}"
+    >
+    </app-list-header>
+
+    <div>
+      <div *ngIf="polls$ | async; let polls">
+        <div class="d-flex justify-content-center flex-wrap">
+          <div *ngFor="let poll of polls" class="m-1 poll">
+            <mat-icon
+              *ngxPermissionsOnly="'canDeleteBlogs'"
+              class="poll-delete icon-delete"
+              (click)="deletePoll($event, poll)"
+              >delete</mat-icon
+            >
+            <div class="w-100 d-flex align-items-center justify-content-center">
+              <div
+                class="poll-question-container d-flex align-items-center justify-content-center"
+              >
+                <h2 class="poll-question">{{ poll.subject }}</h2>
+              </div>
+            </div>
+            <div
+              class="poll-answers-container d-flex justify-content-center align-items-center flex-column"
+            >
+              <div class="poll-answer" *ngFor="let answer of poll.answers">
+                <div class="d-flex justify-content-between align-items-center">
+                  <span
+                    class="poll-answer-selection-perc"
+                    [style.width]="
+                      poll.answersCount == 0
+                        ? '0%'
+                        : (answer.selectedCount / poll.answersCount | percent)
+                    "
+                  >
+                  </span>
+                  <div
+                    class="poll-answer-content d-flex justify-content-between align-items-center"
+                  >
+                    <span>{{ answer.content }}</span>
+                    <span>
+                      {{
+                        poll.answersCount == 0
+                          ? "0%"
+                          : (answer.selectedCount / poll.answersCount | percent)
+                      }}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <app-no-data-placeholder [data]="polls"> </app-no-data-placeholder>
+      </div>
+    </div>
+
+    <mat-paginator
+      [pageSize]="10"
+      (page)="loadPolls()"
+      [length]="totalRows$ | async"
+      [pageSizeOptions]="[1, 5, 10, 50]"
+      showFirstLastButtons
+    >
+    </mat-paginator>
+  </div>
+</div>

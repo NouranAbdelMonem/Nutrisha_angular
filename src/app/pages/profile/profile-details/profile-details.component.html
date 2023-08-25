@@ -1,0 +1,91 @@
+<div class="mx-3">
+  <h3>{{ "PROFILE.MY_PROFILE" | translate }}</h3>
+
+  <div class="mx-3" *ngIf="userDetails">
+    <div class="d-flex justify-content-start align-items-center mb-2">
+      <div class="profile-image__container" (click)="imageFile.click()">
+        <img
+          class="w-100 h-100"
+          [src]="currentSelectUserImage ?? 'assets/media/no-profile-image.png'"
+        />
+
+        <div class="profile-image__edit-image">
+          <span>{{ "PROFILE.EDIT_IMAGE" | translate }}</span>
+        </div>
+      </div>
+      <span class="margin-start-1" [textContent]="userName"></span>
+    </div>
+
+    <form [formGroup]="mainInfoForm" class="w-50 d-flex flex-column">
+      <input
+        #imageFile
+        (change)="userImageChanged(imageFile.files)"
+        type="file"
+        [accept]="'image/*'"
+        hidden
+      />
+
+      <mat-form-field>
+        <mat-label> {{ "ADMIN_USERS.NAME_LABEL" | translate }} </mat-label>
+        <input matInput formControlName="username" [(ngModel)]="userName" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label> {{ "AUTH.EMAIL" | translate }} </mat-label>
+        <input matInput formControlName="email" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label> {{ "ADMIN_USERS.ROLE_LABEL" | translate }} </mat-label>
+        <input matInput readonly formControlName="role" />
+      </mat-form-field>
+
+      <button
+        mat-flat-button
+        color="primary"
+        [disabled]="mainInfoForm.touched && mainInfoForm.invalid"
+        (click)="updateProfile()"
+      >
+        {{ "PROFILE.UPDATE_PROFILE" | translate }}
+      </button>
+    </form>
+
+    <div class="mt-3">
+      <p>{{ "AUTH.CHANGE_PASSWORD" | translate }}</p>
+      <form [formGroup]="changePasswordForm" class="w-50 d-flex flex-column">
+        <mat-form-field>
+          <mat-error>
+            {{ "VALIDATION_ERRORS.REQUIRED" | translate }}
+          </mat-error>
+          <mat-label> {{ "AUTH.OLD_PASSWORD" | translate }} </mat-label>
+          <input matInput formControlName="oldPassword" type="password" />
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-error>
+            {{ "VALIDATION_ERRORS.REQUIRED" | translate }}
+          </mat-error>
+          <mat-label> {{ "AUTH.NEW_PASSWORD" | translate }} </mat-label>
+          <input matInput formControlName="newPassword" type="password" />
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-error>
+            {{ "VALIDATION_ERRORS.REQUIRED" | translate }}
+          </mat-error>
+          <mat-label> {{ "AUTH.CONFIRM_PASSWORD" | translate }} </mat-label>
+          <input matInput formControlName="confirmPassword" type="password" />
+        </mat-form-field>
+
+        <button
+          mat-flat-button
+          color="primary"
+          [disabled]="changePasswordForm.invalid"
+          (click)="changePassword()"
+        >
+          {{ "AUTH.CHANGE_PASSWORD" | translate }}
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

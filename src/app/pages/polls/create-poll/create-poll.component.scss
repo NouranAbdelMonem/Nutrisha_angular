@@ -1,0 +1,31 @@
+
+.form-color {
+  width: 100%;
+  border-radius: 30px;
+  outline: none;
+  border: none;
+
+  &::-webkit-color-swatch {
+    border: none;
+    border-radius: 10px;
+    padding: 0;
+  }
+
+  &::-webkit-color-swatch-wrapper {
+    border: none;
+    border-radius: 10px;
+    padding: 0;
+  }
+}
+
+
+.add-answer {
+  border-radius: 8px;
+  border: 1px solid #FF725A;
+}
+
+
+.add-poll {
+  color: white;
+  border-radius: 45px;
+}

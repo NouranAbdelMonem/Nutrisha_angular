@@ -1,0 +1,69 @@
+.poll {
+  position: relative;
+  min-width: 30%;
+  max-width: 30%;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+
+  &:hover {
+    .poll-delete {
+      opacity: 1;
+    }
+  }
+}
+.polls-container {
+  width: 90%;
+}
+
+.poll-question-container {
+  padding-bottom: 1rem;
+  width: 90%;
+}
+
+.poll-question-container .poll-question {
+  //inline-size: 100%;
+  word-break: break-all;
+  overflow-wrap: break-word;
+  margin: 46px 0 0;
+}
+
+.poll-answers-container {
+  padding: 15px;
+  width: 100%;
+}
+
+.poll-answer {
+  position: relative;
+  margin: 5px;
+  width: 100%;
+  overflow: hidden;
+  background: #575757;
+  border-radius: 35px;
+}
+
+.poll-answer-content {
+  width: 100%;
+  position: relative;
+  padding: 5px;
+  margin: 5px;
+  color: white;
+}
+
+.poll-answer-selection-perc {
+  position: absolute;
+  height: 100%;
+  background-color: #ff725a;
+}
+
+.poll-header {
+  margin-inline-start: 1rem;
+}
+
+.poll-delete {
+  opacity: 0;
+  position: absolute;
+  top: 5px;
+  margin-inline-start: 90%;
+  transition: opacity 0.5s linear;
+}

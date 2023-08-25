@@ -1,0 +1,85 @@
+.mat-header-cell {
+  background: #2a3042;
+  color: white;
+}
+.mat-column-profileImage {
+  width: 70px;
+}
+
+.mat-column-name {
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mat-column-email {
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mat-column-phoneNumber {
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mat-cell {
+  padding-inline-end: 0.5rem;
+}
+.profile-image-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  img {
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
+  }
+
+  .manual-subscription {
+    position: absolute;
+    top: -10%;
+
+    color: #215121;
+    font-size: 1.2rem;
+  }
+}
+
+.list-container {
+  background: white;
+  max-width: 100%;
+  //padding: 0 1rem;
+  margin: 1rem;
+}
+
+.subscription-badge {
+  border-radius: 35px;
+  text-align: center;
+  padding: 10px;
+  font-size: 0.8rem;
+}
+.unsubscribed-badge {
+  color: #575757;
+  width: 160px;
+  border: 0.5px solid #575757;
+}
+
+.subscribed-badge {
+  color: white;
+  background-color: #ff725a;
+}
+
+.custom-filter {
+  cursor: pointer;
+  padding:5px 10px;
+  border: 1px solid #215121;
+  border-radius: 10px;
+  margin: 0 5px;
+}
+
+.selected-filter {
+  background-color: #215121;
+  color: white;
+}
+
