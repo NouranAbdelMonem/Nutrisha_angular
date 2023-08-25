@@ -1,0 +1,39 @@
+.lang-selector {
+  border: none;
+  padding: 1rem 3rem;
+  border-radius: 10px;
+}
+
+.langSelected {
+  background: #fcc419;
+}
+
+.lang-not-selected {
+  border: 1px solid #fcc419;
+}
+
+.mat-flat-button {
+  color: white;
+}
+
+.edit {
+  font-size: 1.5rem;
+}
+
+.icon-container {
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+}
+
+
+.comments-wrapper {
+  max-width: 40%;
+}

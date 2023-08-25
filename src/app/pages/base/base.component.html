@@ -1,0 +1,90 @@
+<div class="nav-container">
+  <app-side-nav [collapse]="collapse"></app-side-nav>
+  <div class="body d-flex flex-column">
+    <nav class="top-bar">
+      <!-- <div (click)="collapse = !collapse" style="width: 50px; height: 50px;">
+        <i class="fa-solid fa-bars-sort"></i>
+      </div> -->
+      <!--      <div class="top-bar-left">-->
+      <!--        <div class="top-bar-header">-->
+      <!--          <app-header-title></app-header-title>-->
+      <!--        </div>-->
+      <!--      </div>-->
+      <div class="top-bar-right">
+        <div *ngIf="user$ | async; let user" class="d-flex">
+          <a
+            class="top-bar-item btn-link nav-lang"
+            href=""
+            (click)="$event.preventDefault()"
+          >
+            <img
+              appProfileImage
+              [imageUrl]="user.personalImage"
+              [circularWidth]="40"
+            />
+            <span class="top-bar__username">{{ user.name }}</span>
+          </a>
+
+          <a
+            [matMenuTriggerFor]="settingMenu"
+            class="top-bar-item btn-link nav-lang"
+          >
+            <i class="fa-solid fa-gear"></i>
+          </a>
+
+          <mat-menu #settingMenu="matMenu">
+            <a
+              class="top-bar-item btn-link w-100"
+              mat-menu-item
+              href="profiles/my-profile"
+            >
+              {{ "PROFILE.MY_PROFILE" | translate }}
+            </a>
+
+            <button
+              [matMenuTriggerFor]="changeLangMenu"
+              class="top-bar-item btn-link w-100"
+              mat-menu-item
+            >
+              {{ "TOP_BAR.CHANGE_LANGUAGE" | translate }}
+            </button>
+            <mat-menu #changeLangMenu>
+              <button
+                *ngFor="let lang of languages"
+                (click)="changeLang(lang)"
+                mat-menu-item
+              >
+                <img class="lang-logo" [src]="lang.logo" alt="" />
+                {{ lang.title | translate }}
+              </button>
+            </mat-menu>
+
+            <a
+              class="top-bar-item btn-link w-100"
+              style="color: red"
+              href="auth/login"
+              (click)="logOut()"
+              mat-menu-item
+            >
+              {{ "AUTH.LOGOUT" | translate }}
+            </a>
+          </mat-menu>
+        </div>
+        <div class="top-bar-right-item top-bar-user"></div>
+      </div>
+    </nav>
+
+    <div class="content flex-grow-1">
+      <router-outlet></router-outlet>
+    </div>
+
+<!--    <div class="footer mt-1 d-flex justify-content-start px-5 py-3">-->
+<!--      <a class="margin-end-1" routerLink="terms">-->
+<!--        {{ "FOOTER.TERMS" | translate }}-->
+<!--      </a>-->
+<!--      <a routerLink="privacy">-->
+<!--        {{"FOOTER.PRIVACY" | translate}}-->
+<!--      </a>-->
+<!--    </div>-->
+  </div>
+</div>

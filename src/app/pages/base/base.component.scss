@@ -1,0 +1,96 @@
+$baseNavColor: #1E1E2D;
+$navHeaderColor: #1A1A27;
+$topBarHoverColor: #3699FF;
+
+.nav-container {
+  display: flex;
+  //width: 100vw;
+  padding: 0;
+  margin: 0;
+}
+
+.body {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  border: #d0bbbb;
+  overflow: hidden;
+  //margin-inline-start: 15%;
+  margin-inline-start: 285px;
+}
+
+/*#endregion*/
+/*#region Nav Bar*/
+.top-bar {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 1rem;
+  background-color: white;
+  height: 65px;
+}
+
+.top-bar-right {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.top-bar-header {
+  margin: 0 1rem;
+}
+
+.top-bar-right-item {
+  padding: 0 0.5rem;
+}
+
+.top-bar-user {
+  font-size: 2rem;
+}
+
+.nav-lang-selector {
+  cursor: pointer;
+  color: #3699FF;
+}
+
+.nav-lang {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.selected-lang-logo {
+  width: 30px;
+  height: 30px;
+}
+
+.lang-logo {
+  width: 20px;
+  height: 20px;
+}
+
+.top-bar-item {
+  color: #B5B5C3;
+  display: inline-flex;
+  height: 52px;
+}
+
+.top-bar-item:hover {
+  color: $topBarHoverColor;
+  border-radius: 3px;
+  background-color: #F3F6F9;
+}
+
+.top-bar__username {
+  color: black;
+  margin-inline-start: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/*#endregion*/
+
+.footer {
+  background-color: white;
+}

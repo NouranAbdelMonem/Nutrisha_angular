@@ -1,0 +1,193 @@
+<div *ngIf="article" class="m-5">
+  <div class="d-flex justify-content-start">
+    <div class="flex-grow-1 w-75">
+      <div *ngIf="viewOnly">
+        <div
+          *ngxPermissionsOnly="['canEditArticles', 'canDeleteArticles']"
+          class="d-flex justify-content-end"
+        >
+          <div class="icon-container" [matMenuTriggerFor]="menu">
+            <i class="fa-solid fa-ellipsis-vertical"> </i>
+          </div>
+          <mat-menu #menu="matMenu">
+            <!--            <button *ngxPermissionsOnly="'canEditArticles'" mat-menu-item (click)="viewOnly = false">-->
+            <!--              {{ "SHARED.EDIT" | translate }}-->
+            <!--            </button>-->
+            <button
+              *ngxPermissionsOnly="'canDeleteArticles'"
+              mat-menu-item
+              (click)="delete()"
+            >
+              {{ "SHARED.DELETE" | translate }}
+            </button>
+          </mat-menu>
+        </div>
+      </div>
+
+      <div *ngIf="this.article.id">
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="d-flex justify-content-start">
+            <img
+              appProfileImage
+              [imageUrl]="article.owner.profileImage"
+              [circularWidth]="60"
+              [alt]="article.owner.name"
+            />
+            <h3 class="mt-1 padding-start-1">
+              {{ article.owner.name ?? ("SHARED.NOT_AVAILABLE" | translate) }}
+            </h3>
+          </div>
+          <div>
+            {{ article.created | date: "short" }}
+          </div>
+        </div>
+        <div>
+          <div>
+            {{ "SOCIAL.LIKES" | translate }}: {{ article.totals.likes }}
+          </div>
+          <div>
+            {{ "SOCIAL.COMMENTS" | translate }}: {{ article.totals.comments }}
+          </div>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-between">
+        <div class="lang">
+          <span>{{ "SHARED.SELECT_LANGUAGE" | translate }}</span>
+          <button
+            class="lang-selector en-selector mx-2"
+            [ngClass]="
+              selectedLang == 'en' ? 'langSelected' : 'lang-not-selected'
+            "
+            (click)="$event.preventDefault(); selectedLang = 'en'"
+          >
+            {{ "LANGUAGES.ENGLISH_CODE" | translate }}
+          </button>
+          <button
+            class="lang-selector en-selector mx-2"
+            [ngClass]="
+              selectedLang == 'ar' ? 'langSelected' : 'lang-not-selected'
+            "
+            (click)="$event.preventDefault(); selectedLang = 'ar'"
+          >
+            {{ "LANGUAGES.ARABIC_CODE" | translate }}
+          </button>
+        </div>
+      </div>
+
+      <form
+        [formGroup]="articleForm"
+        class="w-100 d-flex flex-column justify-content-center align-items-start flex-wrap flex-xl-fill"
+      >
+        <mat-form-field class="my-1 w-100">
+          <mat-label>{{ "ARTICLES.SUBJECT" | translate }}</mat-label>
+          <input
+            matInput
+            [maxLength]="120"
+            type="text"
+            formControlName="subject"
+            [readonly]="viewOnly"
+          />
+          <mat-error>
+            <span *ngIf="articleForm.get('subject').hasError('required')">{{
+              "VALIDATION_ERRORS.REQUIRED" | translate
+            }}</span>
+          </mat-error>
+        </mat-form-field>
+
+        <app-blog-tag
+          #tag
+          class="my-1 w-100"
+          formControlName="tag"
+          [readOnly]="viewOnly"
+        ></app-blog-tag>
+
+        <app-rich-text
+          #richText
+          class="my-1 w-100"
+          [currentLang]="selectedLang"
+          [readOnly]="viewOnly"
+          formControlName="description"
+        >
+        </app-rich-text>
+
+        <app-attachment
+          #coverImage
+          class="my-1 w-100"
+          formControlName="coverImage"
+          [imagesType]="'image/*'"
+          [supportType]="'image'"
+          [maxLength]="1"
+          [minLength]="1"
+          [required]
+          label="{{ 'ATTACHMENTS.COVER_IMAGE' | translate }}*"
+          [readOnly]="viewOnly"
+          [flags]="'CoverImage'"
+        >
+        </app-attachment>
+
+        <app-attachment
+          class="my-1 w-100"
+          formControlName="additionalMedia"
+          [imagesType]="'image/*'"
+          [supportType]="'all'"
+          label="SHARED.ADDITIONAL"
+          [readOnly]="viewOnly"
+        >
+        </app-attachment>
+        <div class="w-100 d-flex">
+          <!--          <div>-->
+          <button
+            *ngxPermissionsOnly="article.id ? 'canEditBlogs' : 'canCreateBlogs'"
+            mat-flat-button
+            color="primary"
+            [hidden]="viewOnly"
+            [disabled]="articleForm.invalid"
+            (click)="submit()"
+          >
+            {{
+              (article.id ? "SHARED.SAVE_CHANGES" : "SHARED.ADD") | translate
+            }}
+          </button>
+
+          <button
+            class="margin-start-1"
+            mat-stroked-button
+            color="primary"
+            [hidden]="viewOnly"
+            (click)="
+              $event.preventDefault();
+              richText.clear();
+              tag.clear();
+              coverImage.clear();
+              cancelEditing()
+            "
+          >
+            {{ "SHARED.CANCEL" | translate }}
+          </button>
+          <!--          </div>-->
+
+          <div *ngxPermissionsOnly="'canDeleteBlogs'">
+            <button
+              class="margin-start-1"
+              mat-flat-button
+              color="warn"
+              *ngIf="article.id"
+              (click)="delete()"
+            >
+              {{ "SHARED.DELETE" | translate }}
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="comments-wrapper" *ngxPermissionsOnly="'canViewComments'">
+      <app-comments-list
+        class="flex-grow-0"
+        *ngIf="this.article.id"
+        [entityId]="this.article.id"
+      ></app-comments-list>
+    </div>
+  </div>
+</div>

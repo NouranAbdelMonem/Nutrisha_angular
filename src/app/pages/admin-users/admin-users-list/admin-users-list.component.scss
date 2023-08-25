@@ -1,0 +1,17 @@
+.mat-header-cell {
+  background: #2a3042;
+  color: white;
+}
+
+.custom-filter {
+  cursor: pointer;
+  padding: 5px 10px;
+  border: 1px solid #215121;
+  border-radius: 10px;
+  margin: 0 5px;
+}
+
+.selected-filter {
+  background-color: #215121;
+  color: white;
+}

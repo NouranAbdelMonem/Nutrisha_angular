@@ -1,0 +1,24 @@
+.login-form-container {
+  height: 100vh;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: white;
+}
+
+.login-image {
+  height: 100%;
+  object-fit: fill;
+}
+
+.login-form {
+  width: 100%;
+  border-radius: 1rem;
+  margin-inline-end: 8%;
+}
+
+.privacy {
+  position: fixed;
+  bottom: 1rem;
+}

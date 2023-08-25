@@ -1,0 +1,82 @@
+<div class="m-3">
+  <h3>
+    {{
+      this.user?.id
+        ? ("SHARED.EDIT" | translate) + " " + this.user.name
+        : ("ADMIN_USERS.ADD_NEW_LABEL" | translate)
+    }}
+  </h3>
+  <form
+    [formGroup]="userFormGroup"
+    class="w-50 d-flex flex-column justify-content-start align-items-start"
+  >
+    <mat-form-field class="w-100">
+      <mat-label>{{ "ADMIN_USERS.NAME_LABEL" | translate }}</mat-label>
+      <input
+        [readonly]="!!user?.id"
+        matInput
+        formControlName="userName"
+        [required]="!user?.id"
+      />
+      <mat-error>{{ "VALIDATION_ERRORS.REQUIRED" | translate }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="w-100">
+      <mat-label>{{ "ADMIN_USERS.EMAIL_LABEL" | translate }}</mat-label>
+      <input
+        [readonly]="!!user?.id"
+        matInput
+        formControlName="email"
+        [required]="!user?.id"
+      />
+      <mat-error>{{
+        "VALIDATION_ERRORS.INCORRECT_EMAIL" | translate
+      }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field *ngIf="!user?.id" class="w-100">
+      <mat-label>{{ "ADMIN_USERS.PASSWORD_LABEL" | translate }}</mat-label>
+      <input
+        matInput
+        type="password"
+        formControlName="password"
+        [required]="!user"
+      />
+      <mat-error>{{ "VALIDATION_ERRORS.REQUIRED" | translate }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="w-100">
+      <mat-label>{{ "ADMIN_USERS.ROLE_LABEL" | translate }}</mat-label>
+      <mat-select formControlName="roleId">
+        <mat-option *ngFor="let role of roles" [value]="role.id">
+          {{ "ROLES.LABELS." + role.name | translate }}</mat-option
+        >
+      </mat-select>
+      <mat-error>{{ "VALIDATION_ERRORS.REQUIRED" | translate }}</mat-error>
+    </mat-form-field>
+
+    <button
+      class="w-100 my-3 rounded"
+      type="submit"
+      mat-flat-button
+      color="primary"
+      (click)="submit()"
+      [disabled]="userFormGroup.invalid"
+    >
+      {{ (user?.id ? "SHARED.SAVE_CHANGES" : "SHARED.ADD") | translate }}
+    </button>
+  </form>
+
+  <div *ngxPermissionsOnly="'canDeleteAdminUsers'">
+    <button
+      *ngIf="user?.id"
+      class="w-50 rounded"
+      type="submit"
+      mat-flat-button
+      color="warn"
+      (click)="deleteUser(user.id)"
+    >
+      {{ "SHARED.DELETE" | translate }}
+    </button>
+  </div>
+</div>

@@ -1,0 +1,74 @@
+<div class="login-form-container">
+  <div class="d-flex flex-column justify-content-center align-items-start position-relative">
+    <img class="mb-2" src="../../../../assets/media/login/login-logo.svg" />
+    <form
+      class="login-form d-flex flex-column"
+      [formGroup]="loginForm"
+      (submit)="login()"
+    >
+      <mat-form-field class="my-2">
+        <mat-error>
+          {{ "VALIDATION_ERRORS.REQUIRED" | translate }}
+        </mat-error>
+        <mat-label>{{ "AUTH.EMAIL" | translate }}</mat-label>
+        <input matInput formControlName="email" />
+      </mat-form-field>
+      <mat-form-field class="my-2">
+        <mat-error>
+          {{ "VALIDATION_ERRORS.REQUIRED" | translate }}
+        </mat-error>
+        <mat-label>{{ "AUTH.PASSWORD" | translate }}</mat-label>
+        <input
+          matInput
+          [type]="hidePassword ? 'password' : 'text'"
+          formControlName="password"
+        />
+        <button
+          type="button"
+          mat-icon-button
+          matSuffix
+          (click)="hidePassword = !hidePassword; $event.preventDefault()"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hidePassword"
+        >
+          <mat-icon>{{
+            hidePassword ? "visibility_off" : "visibility"
+          }}</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <button
+        mat-flat-button
+        color="primary"
+        type="submit"
+        class="radius-2"
+        [disabled]="loginForm.invalid"
+      >
+        {{ "AUTH.LOGIN" | translate }}
+      </button>
+    </form>
+    <a class="my-1" href="auth/reset-password"
+      >{{ "AUTH.RESET_PASSWORD" | translate }}</a
+    >
+
+    <div class="privacy">
+      <a class="margin-end-1" href="/terms">
+        {{ "FOOTER.TERMS" | translate }}
+      </a>
+      <a class="margin-end-1" href="/privacy">
+        {{"FOOTER.PRIVACY" | translate}}
+      </a>
+      <a class="margin-end-1" href="/faqs">
+        {{"FOOTER.FAQS" | translate}}
+      </a>
+      <a href="/references">
+        {{"FOOTER.REFRENCES" | translate}}
+      </a>
+    </div>
+  </div>
+
+  <img
+    class="login-image"
+    src="../../../../assets/media/login/login-image.png"
+  />
+</div>
