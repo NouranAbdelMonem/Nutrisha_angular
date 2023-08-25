@@ -1,0 +1,6 @@
+<div class="d-flex justify-content-end align-items-center">
+  <div class="search-input-container">
+    <i class="fa fa-search search-icon"></i>
+    <input type="text" #searchInput [placeholder]="'SHARED.SEARCH' | translate" (input)="searchTerm.next(searchInput.value)">
+  </div>
+</div>

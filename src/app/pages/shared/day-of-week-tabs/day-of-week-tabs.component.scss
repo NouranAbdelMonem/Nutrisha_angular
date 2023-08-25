@@ -1,0 +1,11 @@
+.day {
+  padding: 0.5rem 3%;
+  margin:0 5px;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.selected-day {
+  border: 1px solid #215121;
+  border-radius: 10px;
+}

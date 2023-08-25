@@ -1,0 +1,12 @@
+<div class="w-100 d-flex justify-content-between align-content-center">
+  <div
+    class="day"
+    [ngClass]="dayOfWeek[day] == _selectedDay ? 'selected-day' : ''"
+    *ngFor="let day of dayOfWeekKeys"
+    (click)="
+      _selectedDay = dayOfWeek[day]; selectedDayChange.next(dayOfWeek[day])
+    "
+  >
+    {{ "SHARED.DAYS_OF_WEEK." + day | uppercase | translate }}
+  </div>
+</div>

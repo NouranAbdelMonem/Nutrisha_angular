@@ -1,0 +1,13 @@
+.list-header {
+  min-height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-header__text {
+  font-size: 1.2rem;
+  font-weight: 500;
+  //color: #3699FF;
+  margin-inline-start: 1rem;
+}

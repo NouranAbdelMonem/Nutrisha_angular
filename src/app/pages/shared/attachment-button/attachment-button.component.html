@@ -1,0 +1,34 @@
+<div class="w-100 d-flex">
+  <input
+    type="file"
+    #uploadInput
+    accept="image/*"
+    hidden
+    (change)="prepareImage(uploadInput.files)"
+  />
+  <div
+    class="upload-trigger d-flex justify-content-start align-items-center w-100"
+  >
+    <div
+      class="d-flex p-1 align-items-center justify-content-between h-100 w-100"
+      style="cursor: pointer"
+      (click)="uploadInput.click(); $event.preventDefault()"
+    >
+      <span *ngIf="!media?.file">
+        {{ label ?? ("ATTACHMENTS.CHANGE_IMAGE" | translate) }}
+      </span>
+
+      <div class="p-1" *ngIf="media?.file">
+        {{ media.file.name }}
+      </div>
+
+      <i
+        *ngIf="media || media?.file"
+        class="fa-solid fa-eye"
+        (click)="openImage(media); $event.stopPropagation()"
+      ></i>
+    </div>
+
+    <ng-template #imageAdded> </ng-template>
+  </div>
+</div>
