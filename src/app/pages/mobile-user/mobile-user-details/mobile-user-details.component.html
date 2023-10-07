@@ -307,6 +307,15 @@
               <p *ngFor="let template of templates">
                 {{ template.startDate | date : "dd/MM" }}
                 {{ template.templateName }}
+                <button
+           
+                mat-raised-button
+                color="warn"
+                (click)="deleteMealPlan(template.mealPlanId,userDetails.id)"
+              >
+                {{ "SHARED.DELETE" | translate }}
+              </button>
+         
               </p>
             </div>
           </div>
@@ -322,9 +331,27 @@
             }}
           </div>
         </div>
+       
       </div>
     </div>
-
+    <div class="w-60 h-100 margin-start-1 d-flex flex-column">
+      <mat-form-field>
+        <mat-label>{{ "SHARED.NOTES" | translate }}</mat-label>
+        <textarea
+          class="notes h-100"
+          matInput
+          formControlName="doctorNotes" 
+        > {{
+          userDetails?.currentPlan?.doctorNotes ??
+            ("SHARED.NOT_AVAILABLE" | translate)
+        }}</textarea>
+        <mat-error>{{
+          "VALIDATION_ERRORS.INVALID_VALUE" | translate
+        }}</mat-error>
+      </mat-form-field>
+    
+     
+    </div>
     <div *ngxPermissionsOnly="'canBanAppUsers'">
       <button
         *ngIf="!userDetails.isBanned"

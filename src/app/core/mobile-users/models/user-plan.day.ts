@@ -1,7 +1,8 @@
 ﻿import { DayOfWeek } from '../../shared/models/day-of-week';
 
 export interface MealPlan {
-  notes: string;
+    notes: string;
+    doctorNotes: string;
   days: UserPlanDay[];
   numberOfIAmHungryClicked: number;
 }

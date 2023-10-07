@@ -4,7 +4,10 @@ import { MealPlan } from './user-plan.day';
 
 export interface UserPlanTemplateModel {
   startDate: Date;
-  templateName: string;
+    templateName: string;
+    mealPlanId: number;
+    doctorNotes: string;
+
 }
 
 export class MobileUserDetailsViewModel extends MobileUserListModel {
@@ -55,7 +58,8 @@ function planToViewModel(mealPlan: MealPlan) {
   if (mealPlan == null) return null;
   const planDays = mealPlan.days;
   const plan: any = {
-    notes: mealPlan.notes,
+      notes: mealPlan.notes,
+      doctorNotes: mealPlan.doctorNotes,
     numberOfIAmHungryClicked: mealPlan.numberOfIAmHungryClicked,
   };
   for (let day of planDays) {

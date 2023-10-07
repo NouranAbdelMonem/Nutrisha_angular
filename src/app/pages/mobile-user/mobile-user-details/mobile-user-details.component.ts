@@ -8,6 +8,7 @@ import {
   MobileUserDetailsViewModel,
   MobileUserService,
 } from '../../../core/mobile-users';
+import { MealPlanService } from '../../../core/meal-plan/meal-plan.service';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { DayOfWeek } from '../../../core/shared/models/day-of-week';
 import { MealType } from '../../../core/meals/models/meal-type.enum';
@@ -40,7 +41,9 @@ export class MobileUserDetailsComponent implements OnInit {
     public router: Router,
     private matDialog: MatDialog,
     private translateService: TranslationService,
-    private mobileUserService: MobileUserService
+    private mobileUserService: MobileUserService,
+    private mealPlanService: MealPlanService
+    
   ) {}
 
   ngOnInit(): void {
@@ -116,6 +119,27 @@ export class MobileUserDetailsComponent implements OnInit {
       .subscribe();
   }
 
+  deleteMealPlan(mealPlanId: number,userId:string) {
+  
+    this.matDialog
+      .open(ConfirmDialogComponent, {})
+      .afterClosed()
+      .pipe(
+        switchMap((d) => {
+          if (d) {
+            return this.mealPlanService
+              .delete(mealPlanId.toString()).pipe(
+                tap(async () => {
+                  await this.router.navigateByUrl(`/app/users`);
+                }));
+          }
+ 
+          return of(false);
+        }),
+        untilDestroyed(this)
+      )
+      .subscribe();
+  }
   openMakePremiumDialog() {
     const makePremiumDialog = this.matDialog.open(MakePremiumComponent, {
       data: { userId: this.userId },
