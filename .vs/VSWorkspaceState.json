@@ -3,7 +3,8 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\core"
+    "\\src\\app\\pages"
   ],
+  "SelectedNode": "\\src\\app\\pages\\meal-plan\\meal-plan\\user-meal-plan.component.html",
   "PreviewInSolutionExplorer": false
 }
